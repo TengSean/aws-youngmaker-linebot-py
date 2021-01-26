@@ -1,0 +1,538 @@
+{
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "size": "kilo",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/isiFKIw.jpg",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "1:1.8"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [],
+                        "height": "12%"
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "YoungMaker",
+                            "size": "25px",
+                            "flex": 4,
+                            "weight": "bold",
+                            "align": "center",
+                            "color": "#000000"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "創夢積構",
+                            "size": "25px",
+                            "flex": 4,
+                            "weight": "bold",
+                            "align": "center",
+                            "color": "#000000"
+                          }
+                        ]
+                      }
+                    ],
+                    "height": "100%",
+                    "width": "100%"
+                  }
+                ],
+                "backgroundColor": "#ffefa000",
+                "spacing": "md",
+                "height": "25%",
+                "width": "100%",
+                "paddingTop": "4%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "創是創意、創新、創造力的開發夢是夢想，那些我們童年無邊際的夢孩子透過積木來探索、構築這個世界大人則透過積木來了解孩子眼中的世界！  一起加入Young Maker的行列吧！的小小創客就是你！",
+                            "size": "16px",
+                            "wrap": True
+                          }
+                        ],
+                        "borderWidth": "2px",
+                        "borderColor": "#7C6354",
+                        "cornerRadius": "8px",
+                        "height": "100%",
+                        "paddingStart": "3%",
+                        "paddingEnd": "3%",
+                        "backgroundColor": "#ffffffaa",
+                        "paddingTop": "4%"
+                      }
+                    ],
+                    "paddingTop": "6%",
+                    "height": "100%"
+                  }
+                ],
+                "paddingStart": "5%",
+                "paddingEnd": "5%",
+                "height": "75%",
+                "width": "100%",
+                "paddingBottom": "5%",
+                "paddingTop": "1%"
+              }
+            ],
+            "width": "100%",
+            "position": "absolute",
+            "height": "100%",
+            "offsetTop": "0px",
+            "offsetStart": "0px",
+            "paddingAll": "0px"
+          }
+        ],
+        "height": "350px",
+        "paddingAll": "0px"
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "kilo",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/isiFKIw.jpg",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "1:1.8"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [],
+                        "height": "12%"
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "智高積木",
+                            "size": "25px",
+                            "flex": 4,
+                            "weight": "bold",
+                            "align": "center",
+                            "color": "#000000"
+                          }
+                        ]
+                      }
+                    ],
+                    "height": "100%",
+                    "width": "100%"
+                  }
+                ],
+                "backgroundColor": "#ffefa000",
+                "spacing": "md",
+                "height": "25%",
+                "width": "100%",
+                "paddingTop": "12%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "智高積木是台灣之光！著重於結構、科學原理的探討與應用，對於幼兒園的小朋友來說，積木除了有助於手部肌肉的發展以外，更是能夠培養空間邏輯的概念  而國小積木作品的變化更為豐富！課堂中透過",
+                            "size": "16px",
+                            "wrap": True
+                          }
+                        ],
+                        "borderWidth": "2px",
+                        "borderColor": "#7C6354",
+                        "cornerRadius": "8px",
+                        "height": "100%",
+                        "paddingStart": "3%",
+                        "paddingEnd": "3%",
+                        "backgroundColor": "#ffffffaa",
+                        "paddingTop": "4%"
+                      }
+                    ],
+                    "paddingTop": "6%",
+                    "height": "77%"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [],
+                    "width": "100%",
+                    "height": "5%"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [],
+                            "height": "20%"
+                          },
+                          {
+                            "type": "text",
+                            "text": "查看更多",
+                            "size": "18px",
+                            "align": "center",
+                            "color": "#000000",
+                            "weight": "bold"
+                          }
+                        ],
+                        "width": "100%",
+                        "height": "100%"
+                      }
+                    ],
+                    "width": "100%",
+                    "position": "relative",
+                    "backgroundColor": "#ffd57edd",
+                    "cornerRadius": "8px",
+                    "borderWidth": "2px",
+                    "borderColor": "#7C6354",
+                    "height": "18%",
+                    "action": {
+                      "type": "uri",
+                      "label": "action",
+                      "uri": "https://www.gigotoys.com/%E8%AA%8D%E8%AD%98%E6%99%BA%E9%AB%98/",
+                      "altUri": {
+                        "desktop": "https://www.gigotoys.com/%E8%AA%8D%E8%AD%98%E6%99%BA%E9%AB%98/"
+                      }
+                    }
+                  }
+                ],
+                "paddingStart": "5%",
+                "paddingEnd": "5%",
+                "height": "75%",
+                "width": "100%",
+                "paddingBottom": "5%",
+                "paddingTop": "1%"
+              }
+            ],
+            "width": "100%",
+            "position": "absolute",
+            "height": "100%",
+            "offsetTop": "0px",
+            "offsetStart": "0px",
+            "paddingAll": "0px"
+          }
+        ],
+        "height": "350px",
+        "paddingAll": "0px"
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "kilo",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/isiFKIw.jpg",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "1:1.8"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [],
+                        "height": "12%"
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "假日活動",
+                            "size": "25px",
+                            "flex": 4,
+                            "weight": "bold",
+                            "align": "center",
+                            "color": "#000000"
+                          }
+                        ]
+                      }
+                    ],
+                    "height": "100%",
+                    "width": "100%"
+                  }
+                ],
+                "backgroundColor": "#ffefa000",
+                "spacing": "md",
+                "height": "25%",
+                "width": "100%",
+                "paddingTop": "12%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "週末時間到！除了騎著腳踏車到公園蹦蹦跳跳以外，我們每週都會有各式各樣的活動課，不只小朋友可以參加～也有大人能一起同樂的課程哦！每週一早上8:00準時更新！趕快點選「最新課程」來看看吧！",
+                            "size": "16px",
+                            "wrap": True
+                          }
+                        ],
+                        "borderWidth": "2px",
+                        "borderColor": "#7C6354",
+                        "cornerRadius": "8px",
+                        "height": "100%",
+                        "paddingStart": "3%",
+                        "paddingEnd": "3%",
+                        "backgroundColor": "#ffffffaa",
+                        "paddingTop": "4%"
+                      }
+                    ],
+                    "paddingTop": "6%",
+                    "height": "100%"
+                  }
+                ],
+                "paddingStart": "5%",
+                "paddingEnd": "5%",
+                "height": "75%",
+                "width": "100%",
+                "paddingBottom": "5%",
+                "paddingTop": "1%"
+              }
+            ],
+            "width": "100%",
+            "position": "absolute",
+            "height": "100%",
+            "offsetTop": "0px",
+            "offsetStart": "0px",
+            "paddingAll": "0px"
+          }
+        ],
+        "height": "350px",
+        "paddingAll": "0px"
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "kilo",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/isiFKIw.jpg",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "1:1.8"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [],
+                        "height": "12%"
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "寒暑假營隊",
+                            "size": "25px",
+                            "flex": 4,
+                            "weight": "bold",
+                            "align": "center",
+                            "color": "#000000"
+                          }
+                        ]
+                      }
+                    ],
+                    "height": "100%",
+                    "width": "100%"
+                  }
+                ],
+                "backgroundColor": "#ffefa000",
+                "spacing": "md",
+                "height": "25%",
+                "width": "100%",
+                "paddingTop": "12%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "最精彩的莫過於半年一次的營隊了！不只智高的課程能有更深入的探討，也會安排不同主題的活動加入其中！如：科學實驗、益智桌遊、DIY等等，讓小朋友們在玩樂當中不忘學習，帶著滿滿的收穫回家！",
+                            "size": "16px",
+                            "wrap": True
+                          }
+                        ],
+                        "borderWidth": "2px",
+                        "borderColor": "#7C6354",
+                        "cornerRadius": "8px",
+                        "height": "100%",
+                        "paddingStart": "3%",
+                        "paddingEnd": "3%",
+                        "backgroundColor": "#ffffffaa",
+                        "paddingTop": "4%"
+                      }
+                    ],
+                    "paddingTop": "6%",
+                    "height": "100%"
+                  }
+                ],
+                "paddingStart": "5%",
+                "paddingEnd": "5%",
+                "height": "75%",
+                "width": "100%",
+                "paddingBottom": "5%",
+                "paddingTop": "1%"
+              }
+            ],
+            "width": "100%",
+            "position": "absolute",
+            "height": "100%",
+            "offsetTop": "0px",
+            "offsetStart": "0px",
+            "paddingAll": "0px"
+          }
+        ],
+        "height": "350px",
+        "paddingAll": "0px"
+      }
+    }
+  ]
+}
