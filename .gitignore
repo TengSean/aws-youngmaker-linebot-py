@@ -13,13 +13,14 @@ lib64/
 parts/
 sdist/
 var/
-config/
 *.egg-info/
 .installed.cfg
 *.egg
 
 
 .dynamodb
+
+*.ini
 
 # Serverless directories
 .serverless
