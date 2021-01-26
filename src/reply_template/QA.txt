@@ -1,0 +1,1320 @@
+{
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "size": "kilo",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/isiFKIw.jpg",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "1:1.8"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "image",
+                        "url": "https://i.imgur.com/iM7HKBB.png",
+                        "size": "80px",
+                        "aspectMode": "fit",
+                        "aspectRatio": "1:1"
+                      }
+                    ],
+                    "width": "30%",
+                    "height": "100%"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [],
+                        "height": "12%"
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "臨時更動行程",
+                            "size": "lg",
+                            "flex": 4,
+                            "weight": "bold"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "想取消報名",
+                            "size": "lg",
+                            "flex": 4,
+                            "weight": "bold"
+                          }
+                        ]
+                      }
+                    ],
+                    "height": "100%",
+                    "width": "60%"
+                  }
+                ],
+                "backgroundColor": "#ffefa000",
+                "spacing": "md",
+                "height": "25%",
+                "width": "100%",
+                "paddingTop": "8%",
+                "paddingStart": "5%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                              {
+                                "type": "box",
+                                "layout": "vertical",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "以下是我們的退費須知：",
+                                    "size": "14px",
+                                    "wrap": True
+                                  }
+                                ],
+                                "height": "15%",
+                                "paddingStart": "3%"
+                              },
+                              {
+                                "type": "box",
+                                "layout": "vertical",
+                                "contents": [
+                                  {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "contents": [
+                                      {
+                                        "type": "box",
+                                        "layout": "horizontal",
+                                        "contents": [
+                                          {
+                                            "type": "box",
+                                            "layout": "vertical",
+                                            "contents": [
+                                              {
+                                                "type": "text",
+                                                "text": "前5天以上(含)申請",
+                                                "wrap": True,
+                                                "size": "xs"
+                                              }
+                                            ],
+                                            "width": "65%"
+                                          },
+                                          {
+                                            "type": "box",
+                                            "layout": "vertical",
+                                            "contents": [
+                                              {
+                                                "type": "text",
+                                                "text": "退款",
+                                                "align": "end",
+                                                "size": "xs"
+                                              }
+                                            ],
+                                            "width": "15%"
+                                          },
+                                          {
+                                            "type": "box",
+                                            "layout": "vertical",
+                                            "contents": [
+                                              {
+                                                "type": "text",
+                                                "text": "100%",
+                                                "size": "xs",
+                                                "align": "end"
+                                              }
+                                            ],
+                                            "width": "20%"
+                                          }
+                                        ],
+                                        "width": "100%",
+                                        "height": "15%"
+                                      },
+                                      {
+                                        "type": "separator",
+                                        "color": "#00000077"
+                                      },
+                                      {
+                                        "type": "box",
+                                        "layout": "horizontal",
+                                        "contents": [
+                                          {
+                                            "type": "box",
+                                            "layout": "vertical",
+                                            "contents": [
+                                              {
+                                                "type": "text",
+                                                "text": "前4天申請",
+                                                "wrap": True,
+                                                "size": "xs"
+                                              }
+                                            ],
+                                            "width": "65%"
+                                          },
+                                          {
+                                            "type": "box",
+                                            "layout": "vertical",
+                                            "contents": [
+                                              {
+                                                "type": "text",
+                                                "text": "退款",
+                                                "wrap": True,
+                                                "align": "end",
+                                                "size": "xs"
+                                              }
+                                            ],
+                                            "width": "15%"
+                                          },
+                                          {
+                                            "type": "box",
+                                            "layout": "vertical",
+                                            "contents": [
+                                              {
+                                                "type": "text",
+                                                "text": "80%",
+                                                "size": "xs",
+                                                "align": "end"
+                                              }
+                                            ],
+                                            "width": "20%"
+                                          }
+                                        ],
+                                        "width": "100%",
+                                        "height": "15%"
+                                      },
+                                      {
+                                        "type": "separator",
+                                        "color": "#00000077"
+                                      },
+                                      {
+                                        "type": "box",
+                                        "layout": "horizontal",
+                                        "contents": [
+                                          {
+                                            "type": "box",
+                                            "layout": "vertical",
+                                            "contents": [
+                                              {
+                                                "type": "text",
+                                                "text": "前2-3天申請",
+                                                "wrap": True,
+                                                "size": "xs"
+                                              }
+                                            ],
+                                            "width": "65%"
+                                          },
+                                          {
+                                            "type": "box",
+                                            "layout": "vertical",
+                                            "contents": [
+                                              {
+                                                "type": "text",
+                                                "text": "退款",
+                                                "wrap": True,
+                                                "align": "end",
+                                                "size": "xs"
+                                              }
+                                            ],
+                                            "width": "15%"
+                                          },
+                                          {
+                                            "type": "box",
+                                            "layout": "vertical",
+                                            "contents": [
+                                              {
+                                                "type": "text",
+                                                "text": "50%",
+                                                "size": "xs",
+                                                "align": "end"
+                                              }
+                                            ],
+                                            "width": "20%"
+                                          }
+                                        ],
+                                        "width": "100%",
+                                        "height": "15%"
+                                      },
+                                      {
+                                        "type": "separator",
+                                        "color": "#00000077"
+                                      },
+                                      {
+                                        "type": "box",
+                                        "layout": "horizontal",
+                                        "contents": [
+                                          {
+                                            "type": "box",
+                                            "layout": "vertical",
+                                            "contents": [
+                                              {
+                                                "type": "text",
+                                                "text": "前1天申請",
+                                                "wrap": True,
+                                                "size": "xs"
+                                              }
+                                            ],
+                                            "width": "70%"
+                                          },
+                                          {
+                                            "type": "box",
+                                            "layout": "vertical",
+                                            "contents": [
+                                              {
+                                                "type": "text",
+                                                "text": "恕不退款",
+                                                "wrap": True,
+                                                "align": "center",
+                                                "size": "xs"
+                                              }
+                                            ]
+                                          }
+                                        ],
+                                        "width": "100%",
+                                        "height": "15%"
+                                      }
+                                    ],
+                                    "height": "100%",
+                                    "spacing": "6px"
+                                  }
+                                ],
+                                "height": "85%",
+                                "paddingStart": "3%",
+                                "paddingEnd": "2%",
+                                "paddingBottom": "0%"
+                              }
+                            ],
+                            "height": "90%",
+                            "spacing": "10px"
+                          }
+                        ],
+                        "borderWidth": "2px",
+                        "borderColor": "#7C6354",
+                        "cornerRadius": "8px",
+                        "height": "100%",
+                        "paddingStart": "3%",
+                        "paddingEnd": "3%",
+                        "backgroundColor": "#ffffffaa",
+                        "paddingTop": "7%"
+                      }
+                    ],
+                    "paddingTop": "6%",
+                    "height": "77%"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [],
+                    "width": "100%",
+                    "height": "5%"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [],
+                            "height": "20%"
+                          },
+                          {
+                            "type": "text",
+                            "text": "已了解，申請退款",
+                            "size": "18px",
+                            "weight": "bold",
+                            "align": "center"
+                          }
+                        ],
+                        "width": "100%",
+                        "height": "100%"
+                      }
+                    ],
+                    "width": "100%",
+                    "position": "relative",
+                    "backgroundColor": "#ffd57edd",
+                    "cornerRadius": "8px",
+                    "borderWidth": "2px",
+                    "borderColor": "#7C6354",
+                    "height": "18%",
+                    "action": {
+                      "type": "message",
+                      "label": "action",
+                      "text": "申請退款"
+                    }
+                  }
+                ],
+                "paddingStart": "5%",
+                "paddingEnd": "5%",
+                "height": "75%",
+                "width": "100%",
+                "paddingBottom": "5%",
+                "paddingTop": "1%"
+              }
+            ],
+            "width": "100%",
+            "position": "absolute",
+            "height": "100%",
+            "offsetTop": "0px",
+            "offsetStart": "0px",
+            "paddingAll": "0px"
+          }
+        ],
+        "height": "350px",
+        "paddingAll": "0px"
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "kilo",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/isiFKIw.jpg",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "1:1.8"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "image",
+                        "url": "https://i.imgur.com/iM7HKBB.png",
+                        "size": "80px",
+                        "aspectMode": "fit",
+                        "aspectRatio": "1:1"
+                      }
+                    ],
+                    "width": "30%",
+                    "height": "100%"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [],
+                        "height": "12%"
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "已經繳費成功",
+                            "size": "lg",
+                            "flex": 4,
+                            "weight": "bold"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "但想更換課程",
+                            "size": "lg",
+                            "flex": 4,
+                            "weight": "bold"
+                          }
+                        ]
+                      }
+                    ],
+                    "height": "100%",
+                    "width": "60%"
+                  }
+                ],
+                "backgroundColor": "#ffefa000",
+                "spacing": "md",
+                "height": "25%",
+                "width": "100%",
+                "paddingTop": "8%",
+                "paddingStart": "5%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                              {
+                                "type": "box",
+                                "layout": "vertical",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "請於「同一日」操作以下動作:",
+                                    "size": "14px",
+                                    "wrap": True
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                  {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "contents": [
+                                      {
+                                        "type": "text",
+                                        "text": "1.",
+                                        "size": "14px"
+                                      }
+                                    ],
+                                    "width": "8%"
+                                  },
+                                  {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "contents": [
+                                      {
+                                        "type": "text",
+                                        "text": "請至前一個問題點選「已了解，申請退款」。",
+                                        "align": "start",
+                                        "wrap": True,
+                                        "size": "14px"
+                                      },
+                                      {
+                                        "type": "filler"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                  {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "contents": [
+                                      {
+                                        "type": "text",
+                                        "text": "2.",
+                                        "size": "14px"
+                                      }
+                                    ],
+                                    "width": "8%"
+                                  },
+                                  {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "contents": [
+                                      {
+                                        "type": "text",
+                                        "text": "報名新的課程且繳費完畢，舊課程費用將於5日內退全額。",
+                                        "align": "start",
+                                        "wrap": True,
+                                        "size": "14px"
+                                      },
+                                      {
+                                        "type": "filler"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ],
+                            "height": "50%",
+                            "paddingStart": "3%",
+                            "paddingEnd": "2%"
+                          },
+                          {
+                            "type": "separator"
+                          },
+                          {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                              {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "小提醒：",
+                                    "align": "start",
+                                    "weight": "bold",
+                                    "wrap": True,
+                                    "size": "sm"
+                                  }
+                                ],
+                                "width": "100%"
+                              },
+                              {
+                                "type": "box",
+                                "layout": "vertical",
+                                "contents": [
+                                  {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "contents": [
+                                      {
+                                        "type": "text",
+                                        "text": "若沒有在同一日內完成，系統將會視為取消報名並依照申請日的退還比例退款唷！",
+                                        "size": "14px",
+                                        "wrap": True
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "spacing": "xs"
+                              }
+                            ],
+                            "height": "45%",
+                            "paddingTop": "7%",
+                            "paddingStart": "3%",
+                            "paddingEnd": "2%"
+                          }
+                        ],
+                        "borderWidth": "2px",
+                        "borderColor": "#7C6354",
+                        "cornerRadius": "8px",
+                        "height": "100%",
+                        "paddingStart": "3%",
+                        "paddingEnd": "3%",
+                        "backgroundColor": "#ffffffaa",
+                        "paddingTop": "6%"
+                      }
+                    ],
+                    "paddingTop": "6%",
+                    "height": "100%"
+                  }
+                ],
+                "paddingStart": "5%",
+                "paddingEnd": "5%",
+                "height": "75%",
+                "width": "100%",
+                "paddingBottom": "5%",
+                "paddingTop": "1%"
+              }
+            ],
+            "width": "100%",
+            "position": "absolute",
+            "height": "100%",
+            "offsetTop": "0px",
+            "offsetStart": "0px",
+            "paddingAll": "0px"
+          }
+        ],
+        "height": "350px",
+        "paddingAll": "0px"
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "kilo",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/isiFKIw.jpg",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "1:1.8"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "image",
+                        "url": "https://i.imgur.com/iM7HKBB.png",
+                        "size": "80px",
+                        "aspectMode": "fit",
+                        "aspectRatio": "1:1"
+                      }
+                    ],
+                    "width": "30%",
+                    "height": "100%"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [],
+                        "height": "12%"
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "可以把名額",
+                            "size": "lg",
+                            "flex": 4,
+                            "weight": "bold"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "轉讓給別人嗎?",
+                            "size": "lg",
+                            "flex": 4,
+                            "weight": "bold"
+                          }
+                        ]
+                      }
+                    ],
+                    "height": "100%",
+                    "width": "60%"
+                  }
+                ],
+                "backgroundColor": "#ffefa000",
+                "spacing": "md",
+                "height": "25%",
+                "width": "100%",
+                "paddingTop": "8%",
+                "paddingStart": "5%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                              {
+                                "type": "box",
+                                "layout": "vertical",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "可以唷！只要雙方溝通好相關事宜並提前聯繫Vicky老師確認就可以囉！但系統無法變更報名帳號，所以課程相關訊息、發放的點數一樣會發送到原帳號哦！",
+                                    "size": "14px",
+                                    "wrap": True
+                                  }
+                                ]
+                              }
+                            ],
+                            "height": "50%",
+                            "paddingStart": "3%",
+                            "paddingEnd": "2%"
+                          },
+                          {
+                            "type": "separator"
+                          },
+                          {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                              {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "小提醒：",
+                                    "align": "start",
+                                    "weight": "bold",
+                                    "wrap": True,
+                                    "size": "sm"
+                                  }
+                                ],
+                                "width": "100%"
+                              },
+                              {
+                                "type": "box",
+                                "layout": "vertical",
+                                "contents": [
+                                  {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "contents": [
+                                      {
+                                        "type": "text",
+                                        "text": "請記得要和Vicky老師確認到課名單，不在名單上的小朋友會無法上課哦！",
+                                        "size": "14px",
+                                        "wrap": True
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "spacing": "xs"
+                              }
+                            ],
+                            "height": "45%",
+                            "paddingTop": "7%",
+                            "paddingStart": "3%",
+                            "paddingEnd": "2%"
+                          }
+                        ],
+                        "borderWidth": "2px",
+                        "borderColor": "#7C6354",
+                        "cornerRadius": "8px",
+                        "height": "100%",
+                        "paddingStart": "3%",
+                        "paddingEnd": "3%",
+                        "backgroundColor": "#ffffffaa",
+                        "paddingTop": "6%"
+                      }
+                    ],
+                    "paddingTop": "6%",
+                    "height": "100%"
+                  }
+                ],
+                "paddingStart": "5%",
+                "paddingEnd": "5%",
+                "height": "75%",
+                "width": "100%",
+                "paddingBottom": "5%",
+                "paddingTop": "1%"
+              }
+            ],
+            "width": "100%",
+            "position": "absolute",
+            "height": "100%",
+            "offsetTop": "0px",
+            "offsetStart": "0px",
+            "paddingAll": "0px"
+          }
+        ],
+        "height": "350px",
+        "paddingAll": "0px"
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "kilo",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/isiFKIw.jpg",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "1:1.8"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "image",
+                        "url": "https://i.imgur.com/iM7HKBB.png",
+                        "size": "80px",
+                        "aspectMode": "fit",
+                        "aspectRatio": "1:1"
+                      }
+                    ],
+                    "width": "30%",
+                    "height": "100%"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [],
+                        "height": "12%"
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "費用可以保留",
+                            "size": "lg",
+                            "flex": 4,
+                            "weight": "bold"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "到下次使用嗎?",
+                            "size": "lg",
+                            "flex": 4,
+                            "weight": "bold"
+                          }
+                        ]
+                      }
+                    ],
+                    "height": "100%",
+                    "width": "60%"
+                  }
+                ],
+                "backgroundColor": "#ffefa000",
+                "spacing": "md",
+                "height": "25%",
+                "width": "100%",
+                "paddingTop": "8%",
+                "paddingStart": "5%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                              {
+                                "type": "box",
+                                "layout": "vertical",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "不好意思！我們的費用都會在課程結束當天結清， 所以沒辦法幫您保留到下次使用，請您見諒。",
+                                    "size": "14px",
+                                    "wrap": True
+                                  }
+                                ]
+                              }
+                            ],
+                            "height": "50%",
+                            "paddingStart": "3%",
+                            "paddingEnd": "2%"
+                          },
+                          {
+                            "type": "separator"
+                          },
+                          {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                              {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "小提醒：",
+                                    "align": "start",
+                                    "weight": "bold",
+                                    "wrap": True,
+                                    "size": "sm"
+                                  }
+                                ],
+                                "width": "100%"
+                              },
+                              {
+                                "type": "box",
+                                "layout": "vertical",
+                                "contents": [
+                                  {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "contents": [
+                                      {
+                                        "type": "text",
+                                        "text": "如果真的臨時有事情無法到課， 可以至第一個問題申請退款， 或轉讓給其他小朋友參加唷！",
+                                        "size": "14px",
+                                        "wrap": True
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "spacing": "xs"
+                              }
+                            ],
+                            "height": "45%",
+                            "paddingTop": "7%",
+                            "paddingStart": "3%",
+                            "paddingEnd": "2%"
+                          }
+                        ],
+                        "borderWidth": "2px",
+                        "borderColor": "#7C6354",
+                        "cornerRadius": "8px",
+                        "height": "100%",
+                        "paddingStart": "3%",
+                        "paddingEnd": "3%",
+                        "backgroundColor": "#ffffffaa",
+                        "paddingTop": "6%"
+                      }
+                    ],
+                    "paddingTop": "6%",
+                    "height": "100%"
+                  }
+                ],
+                "paddingStart": "5%",
+                "paddingEnd": "5%",
+                "height": "75%",
+                "width": "100%",
+                "paddingBottom": "5%",
+                "paddingTop": "1%"
+              }
+            ],
+            "width": "100%",
+            "position": "absolute",
+            "height": "100%",
+            "offsetTop": "0px",
+            "offsetStart": "0px",
+            "paddingAll": "0px"
+          }
+        ],
+        "height": "350px",
+        "paddingAll": "0px"
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "kilo",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/isiFKIw.jpg",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "1:1.8"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "image",
+                        "url": "https://i.imgur.com/iM7HKBB.png",
+                        "size": "80px",
+                        "aspectMode": "fit",
+                        "aspectRatio": "1:1"
+                      }
+                    ],
+                    "width": "30%",
+                    "height": "100%"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [],
+                        "height": "27%"
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "我有其他問題",
+                            "size": "lg",
+                            "flex": 4,
+                            "weight": "bold",
+                            "wrap": True
+                          }
+                        ]
+                      }
+                    ],
+                    "height": "100%",
+                    "width": "60%"
+                  }
+                ],
+                "backgroundColor": "#ffefa000",
+                "spacing": "md",
+                "height": "25%",
+                "width": "100%",
+                "paddingTop": "8%",
+                "paddingStart": "5%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                              {
+                                "type": "box",
+                                "layout": "vertical",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "請直接留言就可以囉！我們會盡快回覆您 ~ 22:00後的訊息會於明日回覆，謝謝您的耐心等候 !",
+                                    "size": "14px",
+                                    "wrap": True
+                                  }
+                                ],
+                                "paddingEnd": "2%",
+                                "paddingStart": "3%"
+                              }
+                            ],
+                            "margin": "15px",
+                            "height": "70%"
+                          }
+                        ],
+                        "borderWidth": "2px",
+                        "borderColor": "#7C6354",
+                        "cornerRadius": "8px",
+                        "height": "100%",
+                        "paddingStart": "3%",
+                        "paddingEnd": "3%",
+                        "backgroundColor": "#ffffffaa"
+                      }
+                    ],
+                    "paddingTop": "6%",
+                    "height": "77%"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [],
+                    "width": "100%",
+                    "height": "5%"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "image",
+                            "url": "https://i.imgur.com/JdtIHUv.png",
+                            "size": "32px",
+                            "aspectMode": "cover",
+                            "gravity": "center"
+                          }
+                        ],
+                        "width": "33.5%",
+                        "position": "absolute",
+                        "offsetTop": "14%",
+                        "offsetStart": "57%"
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [],
+                            "height": "20%"
+                          },
+                          {
+                            "type": "text",
+                            "text": "點我聯繫",
+                            "size": "18px",
+                            "weight": "bold",
+                            "align": "center"
+                          }
+                        ],
+                        "width": "100%",
+                        "height": "100%",
+                        "action": {
+                          "type": "uri",
+                          "label": "action",
+                          "uri": "https://line.me/ti/p/pYLK9mNBJA"
+                        }
+                      }
+                    ],
+                    "width": "100%",
+                    "position": "relative",
+                    "backgroundColor": "#ffd57edd",
+                    "cornerRadius": "8px",
+                    "borderWidth": "2px",
+                    "borderColor": "#7C6354",
+                    "height": "18%",
+                    "action": {
+                      "type": "uri",
+                      "label": "action",
+                      "uri": "http://linecorp.com/"
+                    }
+                  }
+                ],
+                "paddingStart": "5%",
+                "paddingEnd": "5%",
+                "height": "75%",
+                "width": "100%",
+                "paddingBottom": "5%",
+                "paddingTop": "1%"
+              }
+            ],
+            "width": "100%",
+            "position": "absolute",
+            "height": "100%",
+            "offsetTop": "0px",
+            "offsetStart": "0px",
+            "paddingAll": "0px"
+          }
+        ],
+        "height": "350px",
+        "width": "100%",
+        "paddingAll": "0px"
+      }
+    }
+  ]
+}

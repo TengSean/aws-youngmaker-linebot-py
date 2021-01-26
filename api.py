@@ -1,4 +1,6 @@
 from flask import Flask, request, abort, jsonify
+from config import Config
+
 import logging
 import time
 import datetime
@@ -22,8 +24,9 @@ from linebot.models import (
 )
 
 app = Flask(__name__)
-line_bot_api = LineBotApi('XV1X7KidmK44Bs1oKK8JCshs028vWypnmKpcKV0Xv/GGUplLnrccpEBF3YWHqXGXjiqYb+rCIQU3CoZCEKonzERWWuSx3z+/nnx6dRGMUA1LsXe+7CHxqOGHpM8PbPRKt8Ubn68+5WhjhTpPQjwPSQdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('0d8a150467c7c3629bd50fe6e49a8605')
+cf = Config()
+# line_bot_api = LineBotApi('XV1X7KidmK44Bs1oKK8JCshs028vWypnmKpcKV0Xv/GGUplLnrccpEBF3YWHqXGXjiqYb+rCIQU3CoZCEKonzERWWuSx3z+/nnx6dRGMUA1LsXe+7CHxqOGHpM8PbPRKt8Ubn68+5WhjhTpPQjwPSQdB04t89/1O/w1cDnyilFU=')
+# handler = WebhookHandler('0d8a150467c7c3629bd50fe6e49a8605')
 
 USERS_TABLE = os.environ['USERS_TABLE']
 IS_OFFLINE = os.environ.get('IS_OFFLINE')
@@ -90,7 +93,7 @@ def webhook():
     body = request.get_data(as_text=True)
     app.logger.info("Request body: " + body)
     try:
-        handler.handle(body, signature)
+        cf.handler.handle(body, signature)
     except InvalidSignatureError:
         print("Invalid signature. Please check your channel access token/channel secret.")
         abort(400)
@@ -109,7 +112,7 @@ def handler_follow(name):
 #     wel_json = eval(f.read())
 #   return wel_json
 
-@handler.add(MessageEvent, message=TextMessage)
+@cf.handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
     lineID = event.source.user_id
@@ -117,12 +120,12 @@ def handle_message(event):
     strategy_class, action_func = bot.strategy_action()
     if strategy_class:
         pass
-    line_bot_api.reply_message(
+    cf.line_bot_api.reply_message(
     event.reply_token,
     TextSendMessage(text=msg)
     )
 
-@handler.add(FollowEvent)
+@cf.handler.add(FollowEvent)
 def handle_follow(event):
     user_id = event.source.user_id
 
@@ -131,12 +134,12 @@ def handle_follow(event):
         Item={
             'UUID': {'S':user_id},
             'category': {'S': 'user'},
-            'userName': {'S': line_bot_api.get_profile(user_id).display_name},
+            'userName': {'S': cf.line_bot_api.get_profile(user_id).display_name},
             'timeStamp': {'S': datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')}
         }
     )
     print(user_id)
-    line_bot_api.reply_message(
+    cf.line_bot_api.reply_message(
     event.reply_token,
     TextSendMessage(text=handler_follow(line_bot_api.get_profile(user_id).display_name))
     )
