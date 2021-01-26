@@ -119,7 +119,10 @@ def handle_message(event):
     bot = Bot(msg, lineID)
     strategy_class, action_func = bot.strategy_action()
     if strategy_class:
-        pass
+        task = strategy_class(func = action_func.execute, event = event)
+        task.execute(lid = event.source.user_id)
+        task.name = str(action_func)
+        return 0
     cf.line_bot_api.reply_message(
     event.reply_token,
     TextSendMessage(text=msg)
