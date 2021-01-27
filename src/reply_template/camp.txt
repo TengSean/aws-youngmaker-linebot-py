@@ -21,9 +21,10 @@
         "width": "100%",
         "paddingAll": "0px",
         "action": {
-          "type": "message",
+          "type": "postback",
           "label": "action",
-          "text": "我要報名"
+          "data": "我要報名&camp",
+          "displayText": "我要報名"
         }
       }
     }

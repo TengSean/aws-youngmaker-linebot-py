@@ -20,7 +20,8 @@ from linebot.exceptions import (
 )
 
 from linebot.models import (
-        MessageEvent, TextMessage, TextSendMessage, FollowEvent
+        MessageEvent, PostbackEvent, FollowEvent,
+        TextMessage, TextSendMessage, 
 )
 
 app = Flask(__name__)
@@ -120,7 +121,7 @@ def handle_message(event):
     msg = event.message.text
     lid = event.source.user_id
     bot = Bot(msg, lid)
-    strategy_class, action_func = bot.strategy_action()
+    strategy_class, action_func, args = bot.strategy_action()
     if strategy_class:
         task = strategy_class(func = action_func.execute, event = event)
         task.execute(lid = lid)
@@ -149,6 +150,19 @@ def handle_follow(event):
     event.reply_token,
     TextSendMessage(text=handler_follow(line_bot_api.get_profile(lid).display_name))
     )
+
+@cf.handler.add(PostbackEvent)
+def handle_postback(event):
+#     msg = event.message.text
+    lid = event.source.user_id
+    data = event.postback.data
+    print(data)
+#     bot = Bot(msg, lid, data = data)
+    
+#     if event.postback.data == 'hello':
+#         pass
+#     elif event.postback.data == 'refundConfirm':
+#         pass
     
 if __name__ == '__main__':
         app.run(debug=True)
