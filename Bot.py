@@ -33,6 +33,7 @@ class Bot(object):
         # eg: follow, join etc..
         self.strategy_map = {
             'message':self.strategy_message(),
+            'postback':self.strategy_message(),
             'follow':self.strategy_action(),
         }
 
@@ -57,6 +58,7 @@ class Bot(object):
             if self.__data:
                 # Do postback event
                 pass
+        return strategy_class, action_func, args
             
             
     

@@ -104,24 +104,13 @@ def webhook():
 
     return 'OK'
 
-def handler_follow(name):
-    text = f'''嗨！{name}
-歡迎來到YoungMaker創夢積構！
-從這裡可以看到課程簡介、最新的課程資訊、
-也可以查看歷史課程的相片唷!
-我們固定每週一都會更新內容，
-趕快點選下方選單，來看看有什麼好玩的課吧！'''
-    return text
-#   with open('src/reply_template/welcome.txt', 'r') as f:
-#     wel_json = eval(f.read())
-#   return wel_json
-
 @cf.handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
     lid = event.source.user_id
     mtype = event.type
-    bot = Bot(mtype, msg, lid)
+    print(msg, lid, mtype)
+    bot = Bot(mtype=mtype, msg=msg, lid=lid)
     strategy_class, action_func, args = bot.strategy()
     if strategy_class:
         task = strategy_class(func = action_func.execute, event = event)
@@ -166,9 +155,12 @@ def handle_postback(event):
     lid = event.source.user_id
     data = event.postback.data
     mtype = event.type
-    print(data)
-#     bot = Bot(msg, lid, data = data)
-    
+    bot = Bot(mtype, lid, data = data)
+    strategy_class, action_func, args = bot.strategy()
+    task = strategy_class(func = action_func.execute, event = event)
+    task.execute(lid = lid)
+    task.name = str(action_func)
+
 #     if event.postback.data == 'hello':
 #         pass
 #     elif event.postback.data == 'refundConfirm':

@@ -102,15 +102,9 @@ class ongoing(object):
                                ]))
 class signup(object):
     def execute(cls, *args, **kwargs):
-        return TextSendMessage(text='''嗨！請加Vicky老師好友，
-並回傳以下報名資訊就可以囉！
-
-姓名：
-年級：
-學校：
-報名課程：
-
-若有其他課程相關的問題，也可以直接詢問哦😊''')
+        with open('src/reply_template/signup_msg.txt', 'r') as f:
+            msg = f.read()
+        return TextSendMessage(text=msg)
         
     
     
