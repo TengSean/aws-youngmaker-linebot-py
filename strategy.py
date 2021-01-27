@@ -96,4 +96,12 @@ class ongoing(object):
                                     QuickReplyButton(action=MessageAction(label="帶狀課", text="帶狀課")),
                                     QuickReplyButton(action=MessageAction(label="寒暑假營隊", text="寒暑假營隊"))
                                ]))
+class signup(object):
     
+    def execute(cls, *args, **kwargs):
+        with open('src/reply_template/signup.txt', 'r') as f:
+            flex_json = eval(f.read())
+        return FlexSendMessage(
+                alt_text = f'flex notify',
+                contents = flex_json
+            )

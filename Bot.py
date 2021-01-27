@@ -2,7 +2,7 @@ from strategy import FlexStrategy, MessageStrategy
 
 
 from strategy import QA
-from strategy import ongoing
+from strategy import ongoing, signup
 
 class Bot(object):
     def __init__(self ,msg, lineID):
@@ -13,7 +13,10 @@ class Bot(object):
             
         }
         self.shortReply = {
-            '近期課程': ongoing         
+            '近期課程': ongoing,
+            '帶狀課':signup,
+            '假日活動':signup,
+            '寒暑假營隊':signup,
         }
         
     def strategy_action(self, ):
@@ -23,9 +26,16 @@ class Bot(object):
         if self.__msg in self.flex:
             strategy_class = FlexStrategy
             action_func = self.flex[self.__msg]
+
+            
+            
         elif self.__msg in self.shortReply:
             strategy_class = MessageStrategy
             action_func = self.shortReply[self.__msg]
+
+            
+            
+            
 
         return strategy_class, action_func
         

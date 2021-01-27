@@ -1,4 +1,4 @@
-from flask import Flask, request, abort, jsonify
+from flask import Flask, request, abort, jsonify, render_template
 from config import Config
 
 import logging
@@ -38,7 +38,7 @@ if IS_OFFLINE:
 else:
     client = boto3.client('dynamodb')
     
-
+# 以下是dynamodb測試
 @app.route("/users", methods=["POST"])
 def insert_user():
     user_id =  request.json.get('userId')
@@ -80,7 +80,16 @@ def get_user(user_id):
         "userName": resp['Item']['userName']['S'],
         "timeStamp": resp['Item']['timeStamp']['S']
         })
+# 以下是LIFF程式碼
+@app.route('/')
+@app.route('/index')
+def index():
+    data = "Deploying a Flask App To Heroku"
+    history_dic = {}
+    history_list = []
+    return render_template('index.html', **locals())
 
+# 以下是dynamodb程式碼
 @app.route("/webhook", methods = ['POST'])
 def webhook():
     signature = request.headers['X-Line-Signature']
@@ -110,7 +119,7 @@ def handler_follow(name):
 def handle_message(event):
     msg = event.message.text
     lid = event.source.user_id
-    bot = Bot(msg, lineID)
+    bot = Bot(msg, lid)
     strategy_class, action_func = bot.strategy_action()
     if strategy_class:
         task = strategy_class(func = action_func.execute, event = event)
