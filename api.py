@@ -25,8 +25,6 @@ from linebot.models import (
 
 app = Flask(__name__)
 cf = Config()
-# line_bot_api = LineBotApi('XV1X7KidmK44Bs1oKK8JCshs028vWypnmKpcKV0Xv/GGUplLnrccpEBF3YWHqXGXjiqYb+rCIQU3CoZCEKonzERWWuSx3z+/nnx6dRGMUA1LsXe+7CHxqOGHpM8PbPRKt8Ubn68+5WhjhTpPQjwPSQdB04t89/1O/w1cDnyilFU=')
-# handler = WebhookHandler('0d8a150467c7c3629bd50fe6e49a8605')
 
 USERS_TABLE = os.environ['USERS_TABLE']
 IS_OFFLINE = os.environ.get('IS_OFFLINE')
@@ -39,9 +37,6 @@ if IS_OFFLINE:
             )
 else:
     client = boto3.client('dynamodb')
-# dynamodb = boto3.resource('dynamodb')
-
-    
     
 
 @app.route("/users", methods=["POST"])
@@ -73,7 +68,6 @@ def get_user(user_id):
         TableName=USERS_TABLE,
         Key={
             'UUID': {'S':user_id},
-
             'category': {'S': 'user'}
         }
     )
@@ -115,36 +109,36 @@ def handler_follow(name):
 @cf.handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    lineID = event.source.user_id
+    lid = event.source.user_id
     bot = Bot(msg, lineID)
     strategy_class, action_func = bot.strategy_action()
     if strategy_class:
         task = strategy_class(func = action_func.execute, event = event)
-        task.execute(lid = event.source.user_id)
+        task.execute(lid = lid)
         task.name = str(action_func)
         return 0
     cf.line_bot_api.reply_message(
-    event.reply_token,
-    TextSendMessage(text=msg)
+        event.reply_token,
+        TextSendMessage(text=msg)
     )
 
 @cf.handler.add(FollowEvent)
 def handle_follow(event):
-    user_id = event.source.user_id
+    lid = event.source.user_id
 
     resp = client.put_item(
         TableName=USERS_TABLE,
         Item={
-            'UUID': {'S':user_id},
+            'UUID': {'S':lid},
             'category': {'S': 'user'},
-            'userName': {'S': cf.line_bot_api.get_profile(user_id).display_name},
+            'userName': {'S': cf.line_bot_api.get_profile(lid).display_name},
             'timeStamp': {'S': datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')}
         }
     )
-    print(user_id)
+    print(lid)
     cf.line_bot_api.reply_message(
     event.reply_token,
-    TextSendMessage(text=handler_follow(line_bot_api.get_profile(user_id).display_name))
+    TextSendMessage(text=handler_follow(line_bot_api.get_profile(lid).display_name))
     )
     
 if __name__ == '__main__':
