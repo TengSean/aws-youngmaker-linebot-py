@@ -46,7 +46,7 @@ class TemplateStrategy(BaseStrategy, metaclass = abc.ABCMeta):
         return NotImplemented
     
 
-class MessageStrategy(BaseStrategy):
+class TextStrategy(BaseStrategy):
     def __init__(self, func = None, event = None):
         super().__init__(func = func,
                         event = event)
@@ -64,7 +64,11 @@ class FlexStrategy(TemplateStrategy):
     def get_columns(self, ):
         print(self.carouselColumns[0])
         
-        
+class follow():
+    def execute(cls, *args, **kwargs):
+        with open('src/reply_template/welcome.txt', 'r') as f:
+            msg = f.read().format(kwargs['name'])
+        return TextSendMessage(text=msg)
         
 class QA():
     __CAROUSEL_TEMPLATE = CarouselTemplate(

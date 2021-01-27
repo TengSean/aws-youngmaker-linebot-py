@@ -120,8 +120,9 @@ def handler_follow(name):
 def handle_message(event):
     msg = event.message.text
     lid = event.source.user_id
-    bot = Bot(msg, lid)
-    strategy_class, action_func, args = bot.strategy_action()
+    mtype = event.type
+    bot = Bot(mtype, msg, lid)
+    strategy_class, action_func, args = bot.strategy()
     if strategy_class:
         task = strategy_class(func = action_func.execute, event = event)
         task.execute(lid = lid)
@@ -135,6 +136,7 @@ def handle_message(event):
 @cf.handler.add(FollowEvent)
 def handle_follow(event):
     lid = event.source.user_id
+    mtype = event.type
 
     resp = client.put_item(
         TableName=USERS_TABLE,
@@ -146,16 +148,24 @@ def handle_follow(event):
         }
     )
     print(lid)
-    cf.line_bot_api.reply_message(
-    event.reply_token,
-    TextSendMessage(text=handler_follow(line_bot_api.get_profile(lid).display_name))
-    )
+    
+    bot = Bot(mtype, lid)
+    strategy_class, action_func, args = bot.strategy()
+    task = strategy_class(func = action_func.execute, event = event)
+    task.execute(lid = lid, name = cf.line_bot_api.get_profile(lid).display_name)
+    task.name = str(action_func)
+    
+#     cf.line_bot_api.reply_message(
+#     event.reply_token,
+#     TextSendMessage(text=handler_follow(line_bot_api.get_profile(lid).display_name))
+#     )
 
 @cf.handler.add(PostbackEvent)
 def handle_postback(event):
 #     msg = event.message.text
     lid = event.source.user_id
     data = event.postback.data
+    mtype = event.type
     print(data)
 #     bot = Bot(msg, lid, data = data)
     
