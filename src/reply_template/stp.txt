@@ -1,0 +1,25 @@
+{
+  "type": "bubble",
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "ShareTargetPicker",
+          "uri": "https://liff.line.me/1654880272-OwjwXaXD?mode=share"
+        }
+      },
+      {
+        "type": "spacer",
+        "size": "sm"
+      }
+    ],
+    "flex": 0
+  }
+}

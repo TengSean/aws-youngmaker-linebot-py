@@ -4,7 +4,13 @@ from strategy import FlexStrategy, TextStrategy
 from strategy import QA
 from strategy import ongoing, signup
 from strategy import stripe, camp, weekend
+from strategy import stp
+
+
 from strategy import follow
+
+
+
 
 class Bot(object):
     def __init__(self, mtype, lid,msg=None, data = None):
@@ -20,6 +26,7 @@ class Bot(object):
         self.message_flex = {
             'QA': QA,
             '帶狀課':stripe, '假日活動':weekend, '寒暑假營隊':camp,
+            'stp': stp
         }
         
         self.message_short = {

@@ -137,3 +137,15 @@ class camp(object):
                 alt_text = f'flex notify',
                 contents = flex_json
             )
+    
+    
+    
+class stp(object):
+#     __json = jsonParser()
+    def execute(cls, *args, **kwargs):
+        with open('src/reply_template/stp.txt', 'r') as f:
+            flex_json = eval(f.read())
+        return FlexSendMessage(
+                alt_text = f'flex notify',
+                contents = flex_json
+            )
