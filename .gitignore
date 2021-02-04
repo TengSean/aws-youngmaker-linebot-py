@@ -22,5 +22,7 @@ var/
 
 *.ini
 
+testing.ipynb
+
 # Serverless directories
 .serverless

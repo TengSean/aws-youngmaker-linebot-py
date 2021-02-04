@@ -88,6 +88,7 @@ def index():
     data = "Deploying a Flask App To Heroku"
     history_dic = {}
     history_list = []
+#     return render_template('hammar.html', **locals())
     return render_template('index.html', **locals())
 
 # 以下是dynamodb程式碼
@@ -111,10 +112,11 @@ def handle_message(event):
     mtype = event.type
     print(msg, lid, mtype)
     bot = Bot(mtype=mtype, msg=msg, lid=lid)
-    strategy_class, action_func, args = bot.strategy()
+    strategy_class, action_func, values = bot.strategy()
     if strategy_class:
+#         print(values)
         task = strategy_class(func = action_func.execute, event = event)
-        task.execute(lid = lid)
+        task.execute(values = values)
         task.name = str(action_func)
         return 0
     cf.line_bot_api.reply_message(
@@ -139,7 +141,7 @@ def handle_follow(event):
     print(lid)
     
     bot = Bot(mtype, lid)
-    strategy_class, action_func, args = bot.strategy()
+    strategy_class, action_func, values = bot.strategy()
     task = strategy_class(func = action_func.execute, event = event)
     task.execute(lid = lid, name = cf.line_bot_api.get_profile(lid).display_name)
     task.name = str(action_func)
@@ -153,12 +155,12 @@ def handle_follow(event):
 def handle_postback(event):
 #     msg = event.message.text
     lid = event.source.user_id
-    data = event.postback.data
+    verb = event.postback.data
     mtype = event.type
-    bot = Bot(mtype, lid, data = data)
-    strategy_class, action_func, args = bot.strategy()
+    bot = Bot(mtype, lid, verb = verb)
+    strategy_class, action_func, values = bot.strategy()
     task = strategy_class(func = action_func.execute, event = event)
-    task.execute(lid = lid)
+    task.execute(values = values)
     task.name = str(action_func)
 
 #     if event.postback.data == 'hello':

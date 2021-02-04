@@ -1,11 +1,17 @@
-
 import abc
 import types
+import copy
 from flask import request
 
 from linebot.models import *
 
 from config import Config
+
+from gexcel import ExcelBase
+
+from msgHandler import MsgHandler
+from valuesHandler import ValuesHandler
+
 
 class BaseStrategy():
 
@@ -17,10 +23,10 @@ class BaseStrategy():
             self.__execute = types.MethodType(func, self)
         # print('{} class, task {}'.format(self.__class__.__name__, self.name))
     
-    def __execute(self, Content=None, *args, **kwargs):
+    def __execute(self, *args, **kwargs):
         pass
 
-    def execute(self, Content=None, *args, **kwargs):
+    def execute(self, *args, **kwargs):
         # obj = self.__execute(Content)
         obj = self.__execute(*args, **kwargs)
 
@@ -31,11 +37,12 @@ class BaseStrategy():
         self.__CONFIG.line_bot_api.reply_message(self.event.reply_token, obj)
         
         
-class TemplateStrategy(BaseStrategy, metaclass = abc.ABCMeta):
-    def __init__(self, func = None, event = None, CarouselColumns = None, ):
+class CarouselStrategy(BaseStrategy, metaclass = abc.ABCMeta):
+    def __init__(self, func = None, event = None, *args, **kwargs):
         super().__init__(func = func,
                         event = event,
-                        CarouselColumns = CarouselColumns)
+                        *args,
+                        **kwargs)
 
     @abc.abstractmethod
     def Update_Columns(self, ):
@@ -52,17 +59,17 @@ class TextStrategy(BaseStrategy):
                         event = event)
 
     
-class FlexStrategy(TemplateStrategy):
-    def __init__(self, func = None, event = None, CarouselColumns = None):
+class CarouselFlexStrategy(CarouselStrategy):
+    def __init__(self, func = None, event = None, *args, **kwargs):
         super().__init__(func = func,
                         event = event,
-                        CarouselColumns = CarouselColumns)
+                        *args,
+                        **kwargs)
 
-    def Update_Columns(self, ):
-        print('Test update')
-
+    def Update_Columns(self, msg, values):
+        return [  MsgHandler().msgReplace( copy.deepcopy(msg), value) for value in values]
     def get_columns(self, ):
-        print(self.carouselColumns[0])
+        print('aa')
         
 class follow():
     def execute(cls, *args, **kwargs):
@@ -91,15 +98,30 @@ class QA():
                 )
 
 
-class ongoing(object):
+# Fix template
+class ongoing():
 
-    def execute(cls, *args, **kwargs):
-        return TextSendMessage(text='請選擇課別',
-                               quick_reply=QuickReply(items=[
-                                    QuickReplyButton(action=MessageAction(label="假日活動", text="假日活動")),
-                                    QuickReplyButton(action=MessageAction(label="帶狀課", text="帶狀課")),
-                                    QuickReplyButton(action=MessageAction(label="寒暑假營隊", text="寒暑假營隊"))
-                               ]))
+    def execute(self, *args, **kwargs):
+        return TextSendMessage(
+            text='請選擇課別',
+            quick_reply=QuickReply(items=[
+                QuickReplyButton(action=MessageAction(label="假日活動", text="假日活動 最新課程")),
+                QuickReplyButton(action=MessageAction(label="帶狀課", text="帶狀課 最新課程")),
+                QuickReplyButton(action=MessageAction(label="寒暑假營隊", text="寒暑假營隊 最新課程"))
+            ])
+        )
+    
+# 過渡用
+class currentclass():
+    def execute(self, *args, **kwargs):
+        return TextSendMessage(
+            text='您目前點選 {}'.format(kwargs['values']["{CLASSNAME}"]),
+            quick_reply=QuickReply(items=[
+                QuickReplyButton(action=MessageAction(label="詳細資訊", text='課程資訊 {}'.format(kwargs['values']["{CLASSNAME}"]))),
+                QuickReplyButton(action=MessageAction(label="我要報名", text='我要報名 {}'.format(kwargs['values']["{CLASSNAME}"]))),
+            ])
+        )
+
 class signup(object):
     def execute(cls, *args, **kwargs):
         with open('src/reply_template/signup_msg.txt', 'r') as f:
@@ -108,34 +130,50 @@ class signup(object):
         
     
     
+    
+# Dyanmic template
 class weekend(object):
 #     __json = jsonParser()
     def execute(cls, *args, **kwargs):
         with open('src/reply_template/weekend.txt', 'r') as f:
             flex_json = eval(f.read())
         return FlexSendMessage(
-                alt_text = f'flex notify',
+                alt_text = f'假日活動最新課程',
                 contents = flex_json
             )
 
+# Dyanmic template
 class stripe(object):
 #     __json = jsonParser()
     def execute(cls, *args, **kwargs):
         with open('src/reply_template/stripe.txt', 'r') as f:
             flex_json = eval(f.read())
         return FlexSendMessage(
-                alt_text = f'flex notify',
+                alt_text = f'帶狀課最新課程',
                 contents = flex_json
             )
 
-class camp(object):
-#     __json = jsonParser()
-    def execute(cls, *args, **kwargs):
-        with open('src/reply_template/camp.txt', 'r') as f:
-            flex_json = eval(f.read())
+# Dyanmic template
+# Set carousel list
+class camp():
+    def execute(self, *args, **kwargs):
+#         print(kwargs['values'])
+        with open('src/reply_template/camp_box.txt', 'r') as boxf, open('src/reply_template/camp_element.txt') as elef:
+#             flex_json = eval(boxf.read())
+            box = eval(boxf.read())
+            print(box)
+
+            box['contents'] = self.Update_Columns(
+                                        eval(elef.read()),
+                                        kwargs['values']       
+                                               )
+            flex_json = box
+#             print(flex_json)
+#             flex_json = self.Update_Columns(eval(f.read()), kwargs['args'])
+#         print(ExcelBase().ongoing())
         return FlexSendMessage(
-                alt_text = f'flex notify',
-                contents = flex_json
+                alt_text = f'寒暑假營隊最新課程',
+                contents = flex_json,
             )
     
     
