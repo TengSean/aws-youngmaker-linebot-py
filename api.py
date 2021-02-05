@@ -159,10 +159,11 @@ def handle_postback(event):
     mtype = event.type
     bot = Bot(mtype, lid, verb = verb)
     strategy_class, action_func, values = bot.strategy()
-    task = strategy_class(func = action_func.execute, event = event)
-    task.execute(values = values)
-    task.name = str(action_func)
-
+    if strategy_class:
+        task = strategy_class(func = action_func.execute, event = event)
+        task.execute(values = values)
+        task.name = str(action_func)
+    
 #     if event.postback.data == 'hello':
 #         pass
 #     elif event.postback.data == 'refundConfirm':

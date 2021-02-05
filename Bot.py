@@ -9,15 +9,15 @@ from strategy import currentclass
 
 from strategy import follow
 
+from jsonHandler import JsonHandler
 from msgHandler import MsgHandler
-from valuesHandler import ValuesHandler
 
 from weekUpdate import WeekUpdate
 
 
 class Bot(object):
     def __init__(self, mtype, lid, msg=None, verb = None):
-        
+        self.t = msg
         # begin postback parser.
         if verb:
             self.__verb = verb.split(' ')[0]
@@ -32,24 +32,21 @@ class Bot(object):
         self.__lineID = lid
         
         self.message_flex = {
+            '最新課程': ongoing,
             'QA': QA,
             '帶狀課 最新課程':stripe, '假日活動 最新課程':weekend, '寒暑假營隊 最新課程':camp,
             'stp': stp
         }
-        self.message_short = {
-            '最新課程': ongoing,
-#             '我要報名':signup,
-#             ''
-        }
+
         self.action_short = {
             'follow':follow,
         }
         
         
         self.postback_verb = {
-            '您目前點選':None,
-            '我要報名':None,
-            '詳細資訊':None,
+            '您目前點選':currentclass,
+#             '我要報名':None,
+#             '詳細資訊':None,
         }
         # 處理event action.
         # eg: follow, join etc..
@@ -58,7 +55,7 @@ class Bot(object):
             'postback':self.strategyPostback(),
             'follow':self.strategyAction(),
         }
-        self.message_short = self.__set_MessageShort()
+#         self.message_short = self.__set_MessageShort()
     def __set_MessageShort(self,):
         
         return WeekUpdate().weekUpdate(self.message_short)
@@ -66,39 +63,15 @@ class Bot(object):
     def strategy(self):
         return self.strategy_map[self.__mtype]
         
+    # 純msg
     def strategyMessage(self, ):
         strategy_class = None
         message_func = None
         args = None
         if self.__msg in self.message_flex:
-            
-            if self.__verb in self.postback_verb:
-                # Do postback event
-#                 message_func = self.postback_verb[]
-                if self.__verb == '您目前點選':
-                    args = {'{CLASSNAME}':self.__msg}
-                    strategy_class = TextStrategy
-                    message_func = currentclass
-                
-            else:
-                args = ValuesHandler().valuesHandler(self.__msg)
-#                 print(args)
-                strategy_class = CarouselFlexStrategy
-                message_func = self.message_flex[self.__msg]
-
-                
-            
-        elif self.__msg in self.message_short:
-            # 若有postback 動詞則做
-            if self.__verb in self.postback_verb:
-                # Do postback event
-
-                pass
-            # 否則單純吐出訊息
-            else:
-                strategy_class = TextStrategy
-                message_func = self.message_short[self.__msg]
-                
+            args = MsgHandler().msgHandler(self.__msg)
+            strategy_class = CarouselFlexStrategy
+            message_func = self.message_flex[self.__msg]
             
         return strategy_class, message_func, args
             
@@ -106,20 +79,24 @@ class Bot(object):
         strategy_class = None
         postback_func = None
         args = None
-        print(self.__verb)
+        print(self.__verb, '*'*50)
         if self.__verb in self.postback_verb:
+#             args = MsgHandler().msgHandler(self.__msg)
             args = {'{CLASSNAME}':self.__msg}
             strategy_class = TextStrategy
-            postback_func = currentclass
+            postback_func = self.postback_verb[self.__verb]
+            
         return strategy_class, postback_func, args
     
     # action without msg and data.
     # action only react with mtype.
     def strategyAction(self,):
+
         strategy_class = None
         action_func = None
         args = None
         if self.__mtype in self.action_short:
+#             args = MsgHandler().msgHandler(self.__msg)
             strategy_class = TextStrategy
             action_func = self.action_short[self.__mtype]
             

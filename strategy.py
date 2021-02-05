@@ -9,8 +9,8 @@ from config import Config
 
 from gexcel import ExcelBase
 
+from jsonHandler import JsonHandler
 from msgHandler import MsgHandler
-from valuesHandler import ValuesHandler
 
 
 class BaseStrategy():
@@ -67,7 +67,7 @@ class CarouselFlexStrategy(CarouselStrategy):
                         **kwargs)
 
     def Update_Columns(self, msg, values):
-        return [  MsgHandler().msgReplace( copy.deepcopy(msg), value) for value in values]
+        return [  JsonHandler().jsonReplace( copy.deepcopy(msg), value) for value in values]
     def get_columns(self, ):
         print('aa')
         
@@ -117,7 +117,8 @@ class currentclass():
         return TextSendMessage(
             text='您目前點選 {}'.format(kwargs['values']["{CLASSNAME}"]),
             quick_reply=QuickReply(items=[
-                QuickReplyButton(action=MessageAction(label="詳細資訊", text='課程資訊 {}'.format(kwargs['values']["{CLASSNAME}"]))),
+#                 QuickReplyButton(action=MessageAction(label="詳細資訊", text='課程資訊 {}'.format(kwargs['values']["{CLASSNAME}"]))),
+                QuickReplyButton(action=PostbackAction(label='詳細資訊', data='課程資訊 {}'.format(kwargs['values']["{CLASSNAME}"]), text="查看{}詳細資訊".format(kwargs['values']['{CLASSNAME}']))),
                 QuickReplyButton(action=MessageAction(label="我要報名", text='我要報名 {}'.format(kwargs['values']["{CLASSNAME}"]))),
             ])
         )
