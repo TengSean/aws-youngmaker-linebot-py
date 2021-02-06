@@ -89,7 +89,7 @@ class dynamodbAdapter(object):
 if __name__ == '__main__':
 #     res = dynamodbAdapter().putAllClass("The Big New Movie", 2015,
 #                            "Nothing happens at all.", 0)
-    res = dynamodbAdapter().getClass()
+#     res = dynamodbAdapter().getClass()
 #     res = dynamodbAdapter().queryClass()
 #     res = dynamodbAdapter().updateClass()
     print("Put movie succeeded:")
