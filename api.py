@@ -36,6 +36,7 @@ if IS_OFFLINE:
             region_name = 'localhost',
             endpoint_url = 'http://localhost:8000'
             )
+
 else:
     client = boto3.client('dynamodb')
     

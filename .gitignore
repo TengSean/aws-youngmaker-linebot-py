@@ -21,7 +21,7 @@ var/
 .dynamodb
 
 *.ini
-
+creds.json
 testing.ipynb
 
 # Serverless directories
