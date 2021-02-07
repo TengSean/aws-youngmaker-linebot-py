@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    
-
+	<script src="static/js/script.js"></script>
 <!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 <!--     <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet"> -->
 <!--     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css"> -->
@@ -33,13 +32,17 @@
                 <h1 class="gallery-title">Gallery</h1>
             </div>
 
-            <div align="center">
+            <div align="center" id = "data-filter-now" data-filter-now="all">
                 <button class="filter-button" data-filter="all">All</button>
-                <button class="filter-button" data-filter="category1">Designing</button>
+                
+                {% for item in Description %}
+                 <button class="filter-button" data-filter="{{item.cate}}">{{item.name}}</button>
+<!--                 <button class="filter-button" data-filter="category1">Designing</button>
                 <button class="filter-button" data-filter="category2">Development</button>
-                <button class="filter-button" data-filter="category3">Graphics</button>
+                <button class="filter-button" data-filter="category3">Graphics</button> -->
+                {% endfor %}
             </div>
-
+<!--             <img src="static/js/ya.jpg" alt="Related Book 1" width="20%" height="auto"> -->
             <br/>
             <div id="scroller" class="mb-3">
                 <template id="post_template">
@@ -70,90 +73,6 @@
         </div>
     </div>
 </section>
-
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
-	<script src="static/js/script.js"></script>
-    <script>
-        // Get references to the dom elements
-        var scroller = document.querySelector("#scroller");
-        var template = document.querySelector('#post_template');
-        var sentinel = document.querySelector('#sentinel');
-        var filter = "All";
-        // Set a counter to count the items loaded
-        var counter = 0;
-
-        // Function to request new items and render to the dom
-        function loadItems() {
-
-          // Use fetch to request data and pass the counter value in the QS
-          fetch(`/load?c=${counter}`).then((response) => {
-
-            // Convert the response data to JSON
-            response.json().then((data) => {
-
-              // If empty JSON, exit the function
-              if (!data.length) {
-
-                // Replace the spinner with "No more posts"
-                sentinel.innerHTML = "No more posts";
-                return;
-              }
-
-              // Iterate over the items in the response
-              for (var i = 0; i < data.length; i++) {
-
-                // Clone the HTML template
-                let template_clone = template.content.cloneNode(true);
-                if (i%2 === 0){
-
-                // Query & update the template content
-                    template_clone.querySelector("#iimg").src="https://picsum.photos/400/250?image=486";
-                    template_clone.querySelector("#aimg").setAttribute("data-fancybo","category1");
-                    template_clone.querySelector("#dimg").className+=" category1";
-                    
-//                 template_clone.querySelector("#title").innerHTML = `${data[i][0]}: ${data[i][1]}`;
-//                 template_clone.querySelector("#content").innerHTML = data[i][2];
-                }else{
-                    template_clone.querySelector("#iimg").src="https://picsum.photos/400/250?image=846";
-                    template_clone.querySelector("#aimg").setAttribute("data-fancybo","category2");
-                    template_clone.querySelector("#dimg").className+=" category2";
-                }
-                // Append template to dom
-                scroller.appendChild(template_clone);
-
-                // Increment the counter
-                counter += 1;
-
-                // Update the counter in the navbar
-              }
-            })
-          })
-        }
-
-        // Create a new IntersectionObserver instance
-        var intersectionObserver = new IntersectionObserver(entries => {
-
-          // Uncomment below to see the entry.intersectionRatio when
-          // the sentinel comes into view
-
-          // entries.forEach(entry => {
-          //   console.log(entry.intersectionRatio);
-          // })
-
-          // If intersectionRatio is 0, the sentinel is out of view
-          // and we don't need to do anything. Exit the function
-          if (entries[0].intersectionRatio <= 0) {
-            return;
-          }
-
-          // Call the loadItems function
-          loadItems();
-
-        });
-
-        // Instruct the IntersectionObserver to watch the sentinel
-        intersectionObserver.observe(sentinel);    
-    
-    </script>
 </body>
 </html>

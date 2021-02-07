@@ -26,10 +26,13 @@ class WeeklyUpdate(object):
         else:
             # Do nothing.
             pass
-        
     def __newClass(self, ):
         '''
             return boolean
         '''
         return ExcelBase().newClass()
+
+    def __historyPhoto(sellf, ):
+        pass
+    
 # wu = WeeklyUpdate().weeklyUpdate(None)

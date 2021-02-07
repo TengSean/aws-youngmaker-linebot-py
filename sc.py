@@ -45,7 +45,7 @@ def index():
 def load():
     """ Route to return the posts """
 
-    time.sleep(0.2)  # Used to simulate delay
+    time.sleep(0.1)  # Used to simulate delay
 
     if request.args:
         counter = int(request.args.get("c"))  # The 'counter' value sent in the QS
