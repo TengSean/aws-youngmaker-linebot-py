@@ -8,8 +8,11 @@
 
     <title>Freebie: 4 Bootstrap Gallery Templates</title>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    
+
 <!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 <!--     <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet"> -->
 <!--     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css"> -->
@@ -24,147 +27,133 @@
 
 <section class="portfolio" id="portfolio">
 	<div class="container-fluid">
-		<div class="row">
-
-			<div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<h1 class="gallery-title">Gallery</h1>
-			</div>
-
-			<div align="center">
-				<button class="filter-button" data-filter="all">All</button>
-				<button class="filter-button" data-filter="category1">Designing</button>
-				<button class="filter-button" data-filter="category2">Development</button>
-				<button class="filter-button" data-filter="category3">Graphics</button>
-			</div>
-			
-			<br/>
-
-            <div class="gallery_product col-sm-3 col-xs-6 filter category1">
-                <a class="fancybox" data-fancybox="images" rel="fancybox-thumb" href="https://picsum.photos/400/250?image=122">
-                    <img class="img-responsive" alt="" src="https://picsum.photos/400/250?image=122" />
-                    <div class='img-info'>
-                        <h4>Image Title 1</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </a>
+<!--         <div class="row" id="scroller"> -->
+        <div class="row">
+            <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h1 class="gallery-title">Gallery</h1>
             </div>
 
-            <div class="gallery_product col-sm-3 col-xs-6 filter category2">
-                <a class="fancybox" data-fancybox="images" rel="ligthbox" href="https://picsum.photos/400/250?image=526">
-                    <img class="img-responsive" alt="" src="https://picsum.photos/400/250?image=526" />
-                    <div class='img-info'>
-                        <h4>Image Title 2</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </a>
+            <div align="center">
+                <button class="filter-button" data-filter="all">All</button>
+                <button class="filter-button" data-filter="category1">Designing</button>
+                <button class="filter-button" data-filter="category2">Development</button>
+                <button class="filter-button" data-filter="category3">Graphics</button>
             </div>
 
-            <div class="gallery_product col-sm-3 col-xs-6 filter category3">
-                 <a class="fancybox" data-fancybox="images" rel="ligthbox" href="https://picsum.photos/400/250?image=626">
-                    <img class="img-responsive" alt="" src="https://picsum.photos/400/250?image=626" />
-                    <div class='img-info'>
-                        <h4>Image Title 3</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <br/>
+            <div id="scroller" class="mb-3">
+                <template id="post_template">
+                    <div id="dimg" class="gallery_product col-sm-3 col-xs-6 filter">
+                        <a id="aimg" class="fancybox" data-fancybox="images" rel="fancybox-thumb" href="https://picsum.photos/400/250?image=122">
+                            <img id="iimg" class="img-responsive" alt="" src="https://picsum.photos/400/250?image=122" />
+                            <div class='img-info'>
+                                <h4>Image Title 1</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                        </a>
                     </div>
-                </a>
-            </div>
+                </template>
 
-            <div class="gallery_product col-sm-3 col-xs-6 filter category1">
-                <a class="fancybox" data-fancybox="images" rel="ligthbox" href="https://picsum.photos/400/250?image=626">
-                    <img class="img-responsive" alt="" src="https://picsum.photos/400/250?image=626" />
-                    <div class='img-info'>
-                        <h4>Image Title 4</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <!-- template schema, hidden from the dom-->
+<!--                 <template id="post_template">
+                  <div class="card mb-3 animated fadeIn shadow-sm">
+                    <div class="card-body">
+                      <h4 class="card-title" id="title"></h4>
+                      <span class="text-muted" id="content"></span>
                     </div>
-                </a>
+                  </div>
+                </template> -->
             </div>
-
-            <div class="gallery_product col-sm-3 col-xs-6 filter category2">
-                <a class="fancybox" data-fancybox="images" rel="ligthbox" href="https://picsum.photos/400/250?image=486">
-                    <img class="img-responsive" alt="" src="https://picsum.photos/400/250?image=486" />
-                    <div class='img-info'>
-                        <h4>Image Title 5</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </a>
-            </div>
-
-            <div class="gallery_product col-sm-3 col-xs-6 filter category3">
-                <a class="fancybox" data-fancybox="images" rel="ligthbox" href="https://picsum.photos/400/250?image=846">
-                    <img class="img-responsive" alt="" src="https://picsum.photos/400/250?image=846" />
-                    <div class='img-info'>
-                        <h4>Image Title 6</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </a>
-            </div>
-
-            <div class="gallery_product col-sm-3 col-xs-6 filter category1">
-                <a class="fancybox" data-fancybox="images" rel="ligthbox" href="https://picsum.photos/400/250?image=1066">
-                    <img class="img-responsive" alt="" src="https://picsum.photos/400/250?image=1066" />
-                    <div class='img-info'>
-                        <h4>Image Title 7</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </a>
-            </div>
-
-            <div class="gallery_product col-sm-3 col-xs-6 filter category2">
-                <a class="fancybox" data-fancybox="images" rel="ligthbox" href="https://picsum.photos/400/250?image=506">
-                    <img class="img-responsive" alt="" src="https://picsum.photos/400/250?image=506" />
-                    <div class='img-info'>
-                        <h4>Image Title 8</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </a>
-            </div>
-
-            <div class="gallery_product col-sm-3 col-xs-6 filter category3">
-                <a class="fancybox" data-fancybox="images" rel="ligthbox" href="https://picsum.photos/400/250?image=1026">
-                    <img class="img-responsive" alt="" src="https://picsum.photos/400/250?image=1026" />
-                    <div class='img-info'>
-                        <h4>Image Title 9</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </a>
-            </div>
-
-            <div class="gallery_product col-sm-3 col-xs-6 filter category1">
-                <a class="fancybox" data-fancybox="images" rel="ligthbox" href="https://picsum.photos/400/250?image=1077">
-                    <img class="img-responsive" alt="" src="https://picsum.photos/400/250?image=1077" />
-                    <div class='img-info'>
-                        <h4>Image Title 10</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </a>
-            </div>
-
-            <div class="gallery_product col-sm-3 col-xs-6 filter category2">
-                <a class="fancybox" data-fancybox="images" rel="ligthbox" href="https://picsum.photos/400/250?image=102">
-                    <img class="img-responsive" alt="" src="https://picsum.photos/400/250?image=102" />
-                    <div class='img-info'>
-                        <h4>Image Title 11</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </a>
-            </div>
-
-            <div class="gallery_product col-sm-3 col-xs-6 filter category3">
-                <a class="fancybox" data-fancybox="images" rel="ligthbox" href="https://picsum.photos/400/250?image=106">
-                    <img class="img-responsive" alt="" src="https://picsum.photos/400/250?image=106" />
-                    <div class='img-info'>
-                        <h4>Image Title 12</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </a>
-            </div>
-
-		</div>
-	</div>
+        </div>
+        <div class="d-flex justify-content-center mb-3" id="sentinel">
+            <div class="spinner-border" role="status"></div>
+        </div>
+    </div>
 </section>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
 	<script src="static/js/script.js"></script>
+    <script>
+        // Get references to the dom elements
+        var scroller = document.querySelector("#scroller");
+        var template = document.querySelector('#post_template');
+        var sentinel = document.querySelector('#sentinel');
+        var filter = "All";
+        // Set a counter to count the items loaded
+        var counter = 0;
 
+        // Function to request new items and render to the dom
+        function loadItems() {
+
+          // Use fetch to request data and pass the counter value in the QS
+          fetch(`/load?c=${counter}`).then((response) => {
+
+            // Convert the response data to JSON
+            response.json().then((data) => {
+
+              // If empty JSON, exit the function
+              if (!data.length) {
+
+                // Replace the spinner with "No more posts"
+                sentinel.innerHTML = "No more posts";
+                return;
+              }
+
+              // Iterate over the items in the response
+              for (var i = 0; i < data.length; i++) {
+
+                // Clone the HTML template
+                let template_clone = template.content.cloneNode(true);
+                if (i%2 === 0){
+
+                // Query & update the template content
+                    template_clone.querySelector("#iimg").src="https://picsum.photos/400/250?image=486";
+                    template_clone.querySelector("#aimg").setAttribute("data-fancybo","category1");
+                    template_clone.querySelector("#dimg").className+=" category1";
+                    
+//                 template_clone.querySelector("#title").innerHTML = `${data[i][0]}: ${data[i][1]}`;
+//                 template_clone.querySelector("#content").innerHTML = data[i][2];
+                }else{
+                    template_clone.querySelector("#iimg").src="https://picsum.photos/400/250?image=846";
+                    template_clone.querySelector("#aimg").setAttribute("data-fancybo","category2");
+                    template_clone.querySelector("#dimg").className+=" category2";
+                }
+                // Append template to dom
+                scroller.appendChild(template_clone);
+
+                // Increment the counter
+                counter += 1;
+
+                // Update the counter in the navbar
+              }
+            })
+          })
+        }
+
+        // Create a new IntersectionObserver instance
+        var intersectionObserver = new IntersectionObserver(entries => {
+
+          // Uncomment below to see the entry.intersectionRatio when
+          // the sentinel comes into view
+
+          // entries.forEach(entry => {
+          //   console.log(entry.intersectionRatio);
+          // })
+
+          // If intersectionRatio is 0, the sentinel is out of view
+          // and we don't need to do anything. Exit the function
+          if (entries[0].intersectionRatio <= 0) {
+            return;
+          }
+
+          // Call the loadItems function
+          loadItems();
+
+        });
+
+        // Instruct the IntersectionObserver to watch the sentinel
+        intersectionObserver.observe(sentinel);    
+    
+    </script>
 </body>
 </html>

@@ -120,6 +120,7 @@ class currentclass():
 #                 QuickReplyButton(action=MessageAction(label="詳細資訊", text='課程資訊 {}'.format(kwargs['values']["{CLASSNAME}"]))),
                 QuickReplyButton(action=PostbackAction(label='詳細資訊', data='課程資訊 {}'.format(kwargs['values']["{CLASSNAME}"]), text="查看{}詳細資訊".format(kwargs['values']['{CLASSNAME}']))),
                 QuickReplyButton(action=MessageAction(label="我要報名", text='我要報名 {}'.format(kwargs['values']["{CLASSNAME}"]))),
+                QuickReplyButton(action=MessageAction(label="揪團報名", text='我要報名 {}'.format(kwargs['values']["{CLASSNAME}"]))),
             ])
         )
 

@@ -21,7 +21,9 @@ class Config(metaclass=Singleton):
         self.CHANNEL_ACCESS_TOKEN = self.config['LINE_BOT']['CHANNEL_ACCESS_TOKEN']
         self.handler = None
         self.line_bot_api = None
-        
+        self.imgur_client_id = self.config['IMGUR']['CLIENT_ID']
+        self.imgur_client_secret = self.config['IMGUR']['CLIENT_SECRET']
+        self.imgur_refresh_token = self.config['IMGUR']['REFRESH_TOKEN']
         self.line_bot_init()
 
     def check_file(self, file):

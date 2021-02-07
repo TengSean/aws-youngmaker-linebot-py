@@ -157,6 +157,108 @@
                                 ]
                                 }
                             }
+                            },
+                                {
+                            "type": "flex",
+                            "altText": "Flex Message",
+                            "contents": {
+                                "type": "bubble",
+                                "body": {
+                                "type": "box",
+                                "layout": "vertical",
+                                "spacing": "md",
+                                "contents": [
+                                    {
+                                    "type": "text",
+                                    "text": "幼兒園積木班",
+                                    "size": "xl",
+                                    "gravity": "center",
+                                    "weight": "bold",
+                                    "wrap": true
+                                    },
+                                    {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "spacing": "sm",
+                                    "margin": "lg",
+                                    "contents": [
+                                        {
+                                        "type": "box",
+                                        "layout": "baseline",
+                                        "spacing": "sm",
+                                        "contents": [
+                                            {
+                                            "type": "text",
+                                            "text": "Date",
+                                            "flex": 1,
+                                            "size": "sm",
+                                            "color": "#AAAAAA"
+                                            },
+                                            {
+                                            "type": "text",
+                                            "text": "每週一17:00-18:30",
+                                            "flex": 4,
+                                            "size": "sm",
+                                            "color": "#666666",
+                                            "wrap": true
+                                            }
+                                        ]
+                                        },
+                                        {
+                                        "type": "box",
+                                        "layout": "baseline",
+                                        "spacing": "sm",
+                                        "contents": [
+                                            {
+                                            "type": "text",
+                                            "text": "Place",
+                                            "flex": 1,
+                                            "size": "sm",
+                                            "color": "#AAAAAA"
+                                            },
+                                            {
+                                            "type": "text",
+                                            "text": "渴望一路176號",
+                                            "flex": 4,
+                                            "size": "sm",
+                                            "color": "#666666",
+                                            "wrap": true
+                                            }
+                                        ]
+                                        },
+                                        {
+                                        "type": "box",
+                                        "layout": "vertical",
+                                        "margin": "xxl",
+                                        "contents": [
+                                            {
+                                            "type": "spacer"
+                                            },
+                                            {
+                                                "type": "button",
+                                                "style": "link",
+                                                "height": "sm",
+                                                "action": {
+                                                "type": "uri",
+                                                "label": "check detail",
+                                                "uri": "https://liff.line.me/1654880272-OwjwXaXD/?mode=detail&course=apple"
+                                                },
+                                            },
+                                            {
+                                            "type": "text",
+                                            "text": "You can enter the theater by using this code instead of a ticket",
+                                            "margin": "xxl",
+                                            "size": "xs",
+                                            "color": "#AAAAAA",
+                                            "wrap": true
+                                            }
+                                        ]
+                                        }
+                                    ]
+                                    }
+                                ]
+                                }
+                            }
                             }
                             ]);
                             

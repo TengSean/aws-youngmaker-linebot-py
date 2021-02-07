@@ -12,7 +12,7 @@ from strategy import follow
 from jsonHandler import JsonHandler
 from msgHandler import MsgHandler
 
-from weekUpdate import WeekUpdate
+from weeklyUpdate import WeeklyUpdate
 
 
 class Bot(object):
@@ -58,7 +58,7 @@ class Bot(object):
 #         self.message_short = self.__set_MessageShort()
     def __set_MessageShort(self,):
         
-        return WeekUpdate().weekUpdate(self.message_short)
+        return WeeklyUpdate().weeklyUpdate(self.message_short)
     
     def strategy(self):
         return self.strategy_map[self.__mtype]

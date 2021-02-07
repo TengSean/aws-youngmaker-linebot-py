@@ -12,19 +12,18 @@ class MsgHandler(object):
             
             '{CLASSINTRO}':None,
             '{CLASSDATE}':None,
-            '{CLASSTIME}':None,
             '{CLASSDETAIL}':None,
             
-            '{URL}':None,
+            '{COVERURL}':None,
         }
         self.eb = ExcelBase()
     def msgHandler(self, msg):
         if msg == '假日活動 最新課程':
-            return self.eb.ongoing_week()
+            return self.eb.ongoingWeek()
         elif msg == '寒暑假營隊 最新課程':
-            return self.eb.ongoing_camp()
+            return self.eb.ongoingCamp()
         elif msg == '帶狀課 最新課程':
-            return self.eb.ongoing_stripe()
+            return self.eb.ongoingStripe()
 #         elif msg == ''
         
 
