@@ -53,7 +53,7 @@ class dynamodbAdapter(object):
         
 
         
-    def initClass(self, classes):
+    def putOngoing(self, ongoing):
         createDate = datetime.datetime.now().isoformat()
         lastUpdate = createDate
         dynamodb = boto3.resource('dynamodb',region_name = 'localhost', endpoint_url="http://localhost:8000")
@@ -77,7 +77,8 @@ class dynamodbAdapter(object):
         
         return batch._response
 
-
+    def putAlbum(self,albums):
+        pass
     def getClass(self,):
         dynamodb = boto3.resource('dynamodb',region_name = 'localhost', endpoint_url="http://localhost:8000")
         table = dynamodb.Table('YoungMaker-basic')

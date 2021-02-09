@@ -8,21 +8,42 @@ import itertools
 class WeeklyUpdate(object):
     def __init__(self, ):
         pass
-        self.todo = ['最新課程', '我要報名']
-        
+        self.newclass = None
+        self.album = None
+        self.todo_table = {'newclass':self.__newclass,
+                         'expiredClass':self.__expiredClass,
+                         'album':self.__album}
     def weeklyUpdate(self, old):
 #         ept = {}
 #         for to_eb in itertools.product(self.todo, ExcelBase().ongoingTotal().values()):
 #             [ ept.update({to_eb[0]+' '+te['{CLASSNAME}']:0}) for te in to_eb[1]]
-#         print(res)
-#         pprint(ept)
-#             pprint(to_eb)
-#             old[]
-#             pass
-        newclass = self.__newClass()
-        if newclass:
-#             dynamodb
-            pprint(newclass)
+        '''
+            [Dyanamodb]newClass return type: 
+                - list
+                    - Id: str(uuid4)
+                    - {CLASSTAG}: str
+                    - {CLASSNAME}: str
+                    - {CLASDATE}: str(NOT isoformat)
+                    - {CLASSTIME}: str
+                    - {CLASSINTRO}': str
+                    - {COVERURL}: str(URL)
+            [Dyanamodb]expiredClass return type: 
+                - list
+                    - Id: str(uuid4)
+                    - {CLASSDATE}: str(isoformat)
+                    - {ALBUMHASH}: str
+        '''
+    
+        TODO = ['newclass', 'expiredClass']
+        todo_res = {}
+        for todo in TODO:
+            todo_res[todo] = todo_table[todo]
+        
+#         newclass = self.__newClass()
+#         self.album = self.__album()
+        if self.newclass or self.album:
+            pprint(self.album)
+#             pprint(self.newclass)
         else:
             # Do nothing.
             pass
@@ -31,8 +52,12 @@ class WeeklyUpdate(object):
             return boolean
         '''
         return ExcelBase().newClass()
-
-    def __historyPhoto(sellf, ):
-        pass
+    def __expiredClass(self, ):
+        '''
+            檢查課程是否要移到相簿
+        '''
+        return ExcelBase().expiredClass()
     
-# wu = WeeklyUpdate().weeklyUpdate(None)
+    def __album(sellf, ):
+        return ExcelBase().albumTotal()
+wu = WeeklyUpdate().weeklyUpdate(None)

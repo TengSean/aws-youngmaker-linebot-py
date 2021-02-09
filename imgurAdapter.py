@@ -8,7 +8,7 @@ class ImgurAdapter(object):
     def __init__(self, ):
         self.__config = Config()
         
-    def getHistory(self, albumId):
+    def getAlbum(self, albumId):
 #         albumId = 's9vk1hs'
         url = f"https://api.imgur.com/3/album/{albumId}/images"
 
