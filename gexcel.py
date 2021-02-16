@@ -21,7 +21,7 @@ class ExcelBase(object):
         '''
             return type:
                 - weel: dict
-                    - Id: str(uuid4)
+                    - ID: str(uuid4)
                     - {CLASSTAG}: str
                     - {CLASSNAME}: str
                     - {CLASDATE}: str
@@ -46,7 +46,7 @@ class ExcelBase(object):
             
             retrun type:
                 - list
-                    - Id: str(uuid4)
+                    - ID: str(uuid4)
                     - {CLASSTAG}: str
                     - {CLASSNAME}: str
                     - {CLASDATE}: str
@@ -70,7 +70,7 @@ class ExcelBase(object):
                                         f'G{row_shrange[0]}:G{row_shrange[1]}',
                                         f'L{row_shrange[0]}:L{row_shrange[1]}',
                                         f'P{row_shrange[0]}:P{row_shrange[1]}']))
-            return [{'CLASSTAG}':w[0],'{CLASSNAME}':w[1],'{CLASSDATE}':w[2], '{CLASSTIME}':w[3], '{CLASSINTRO}':w[4], '{COVERURL}':w[5]}for week in np.transpose(weeks) for w in week]
+            return [{'{CLASSTAG}':w[0],'{CLASSNAME}':w[1],'{CLASSDATE}':w[2], '{CLASSTIME}':w[3], '{CLASSINTRO}':w[4], '{COVERURL}':w[5]}for week in np.transpose(weeks) for w in week]
         except:
             return []
             
@@ -103,7 +103,7 @@ class ExcelBase(object):
                                         f'G{row_shrange[0]}:G{row_shrange[1]}',
                                         f'L{row_shrange[0]}:L{row_shrange[1]}',
                                         f'P{row_shrange[0]}:P{row_shrange[1]}']))
-            return [{'CLASSTAG}':c[0],'{CLASSNAME}':c[1],'{CLASSDATE}':c[2], '{CLASSTIME}':c[3], '{CLASSINTRO}':c[4], '{COVERURL}':c[5]}for camp in np.transpose(camps) for c in camp]
+            return [{'{CLASSTAG}':c[0],'{CLASSNAME}':c[1],'{CLASSDATE}':c[2], '{CLASSTIME}':c[3], '{CLASSINTRO}':c[4], '{COVERURL}':c[5]}for camp in np.transpose(camps) for c in camp]
         except:
             return []
         
@@ -113,7 +113,7 @@ class ExcelBase(object):
             
             retrun type:
                 - list
-                    - Id: str(uuid4)
+                    - ID: str(uuid4)
                     - {CLASSTAG}: str
                     - {CLASSNAME}: str
                     - {CLASDATE}: str
@@ -137,7 +137,7 @@ class ExcelBase(object):
                                         f'G{row_shrange[0]}:G{row_shrange[1]}',
                                         f'L{row_shrange[0]}:L{row_shrange[1]}',
                                         f'P{row_shrange[0]}:P{row_shrange[1]}']))
-            return [{'CLASSTAG}':s[0],'{CLASSNAME}':s[1],'{CLASSDATE}':s[2], '{CLASSTIME}':s[3], '{CLASSINTRO}':s[4], '{COVERURL}':s[5]}for stripe in np.transpose(stripes) for s in stripe]
+            return [{'{CLASSTAG}':s[0],'{CLASSNAME}':s[1],'{CLASSDATE}':s[2], '{CLASSTIME}':s[3], '{CLASSINTRO}':s[4], '{COVERURL}':s[5]}for stripe in np.transpose(stripes) for s in stripe]
         except:
             return []
         
@@ -147,9 +147,9 @@ class ExcelBase(object):
         try:
             week, camp, stripe = self.albumWeek(sheet = sheet), self.albumCamp(sheet = sheet), self.albumStripe(sheet = sheet)
             print(week)
-            week = [{'Id':w[0], '{CLASSTAG}':w[1], '{CLASSNAME}':w[2], '{CLASSDATE}':w[3], '{ALBUMHASH}': w[4]} for w in week if len(w) == 4] if week else []
-            camp = [{'Id':c[0], '{CLASSTAG}':c[1], '{CLASSNAME}':c[2], '{CLASSDATE}':c[3], '{ALBUMHASH}': c[4]} for c in camp if len(c) == 4] if camp else []
-            stripe = [{'Id':s[0], '{CLASSTAG}':s[1], '{CLASSNAME}':s[2], '{CLASSDATE}':s[3], '{ALBUMHASH}': s[4]} for s in stripe if len(s) == 4] if stripe else []
+            week = [{'{ID}':w[0], '{CLASSTAG}':w[1], '{CLASSNAME}':w[2], '{CLASSDATE}':w[3], '{ALBUMHASH}': w[4]} for w in week if len(w) == 4] if week else []
+            camp = [{'{ID}':c[0], '{CLASSTAG}':c[1], '{CLASSNAME}':c[2], '{CLASSDATE}':c[3], '{ALBUMHASH}': c[4]} for c in camp if len(c) == 4] if camp else []
+            stripe = [{'{ID}':s[0], '{CLASSTAG}':s[1], '{CLASSNAME}':s[2], '{CLASSDATE}':s[3], '{ALBUMHASH}': s[4]} for s in stripe if len(s) == 4] if stripe else []
         except:
             week = []
             camp = []
@@ -162,7 +162,7 @@ class ExcelBase(object):
             
             retrun type:
                 - list
-                    - {Id}: str
+                    - {ID}: str
                     - {CLASSTAG}: str
                     - {CLASSNAME}: str
                     - {CLASSDATE}: str(NOT isoformat)
@@ -174,7 +174,7 @@ class ExcelBase(object):
             sheet = kwargs['sheet']
         try:
             weekend = sheet.get(f"A4:E{self.__ALBUMMAX}")
-            weekend = [{'Id':w[0], '{CLASSTAG}':w[1], '{CLASSNAME}':w[2], '{CLASSDATE}':w[3], '{ALBUMHASH}': w[4]} for w in weekend if len(w) == 5]
+            weekend = [{'{ID}':w[0], '{CLASSTAG}':w[1], '{CLASSNAME}':w[2], '{CLASSDATE}':w[3], '{ALBUMHASH}': w[4]} for w in weekend if len(w) == 5]
         except:
             weekend = []
         return weekend
@@ -185,7 +185,7 @@ class ExcelBase(object):
             
             retrun type:
                 - list
-                    - {Id}: str
+                    - {ID}: str
                     - {CLASSTAG}: str
                     - {CLASSNAME}: str
                     - {CLASSDATE}: str(NOT isoformat)
@@ -197,7 +197,7 @@ class ExcelBase(object):
             sheet = kwargs['sheet']
         try:
             camp = sheet.get(f"F4:J{self.__ALBUMMAX}")
-            camp = [{'Id':c[0], '{CLASSTAG}':c[1], '{CLASSNAME}':c[2], '{CLASSDATE}':c[3], '{ALBUMHASH}': c[4]} for c in camp if len(c) == 5 ]
+            camp = [{'{ID}':c[0], '{CLASSTAG}':c[1], '{CLASSNAME}':c[2], '{CLASSDATE}':c[3], '{ALBUMHASH}': c[4]} for c in camp if len(c) == 5 ]
         except:
             camp = []
         return camp
@@ -208,7 +208,7 @@ class ExcelBase(object):
             
             retrun type:
                 - list
-                    - {Id}: str
+                    - {ID}: str
                     - {CLASSTAG}: str
                     - {CLASSNAME}: str
                     - {CLASSDATE}: str(NOT isoformat)
@@ -220,7 +220,7 @@ class ExcelBase(object):
             sheet = kwargs['sheet']
         try:
             stripe = sheet.get(f"K4:O{self.__ALBUMMAX}")
-            stripe = [{'Id':s[0], '{CLASSTAG}':s[1], '{CLASSNAME}':s[2], '{CLASSDATE}':s[3], '{ALBUMHASH}': s[4]} for s in stripe if len(s) == 5 ]
+            stripe = [{'{ID}':s[0], '{CLASSTAG}':s[1], '{CLASSNAME}':s[2], '{CLASSDATE}':s[3], '{ALBUMHASH}': s[4]} for s in stripe if len(s) == 5 ]
         except:
             stripe = []
         return stripe
@@ -232,7 +232,7 @@ class ExcelBase(object):
             
             return type: 
                 - list
-                    - Id: str(uuid4)
+                    - ID: str(uuid4)
                     - {CLASSTAG}: str
                     - {CLASSNAME}: str
                     - {CLASDATE}: str
@@ -276,6 +276,7 @@ class ExcelBase(object):
             if not lock:
                 new_list.pop(-1)
                 break
+        print(new_list)
         return new_list
     
     def __newClassFill(self, sheet, classLabel, addr):
@@ -294,16 +295,13 @@ class ExcelBase(object):
         '''
         newId = [[str(uuid.uuid4())] for _ in addr]
         row_shrange = [addr[0][1:], addr[-1][1:]]
-        print(row_shrange)
-        sheet.update(":".join( [addr[0], addr[-1]] ), newId)
-#         pprint( self.ongoingWeek(row_shrange = row_shrange, sheet = sheet) )
-#         return []
+#         sheet.update(":".join( [addr[0], addr[-1]] ), newId)
         if classLabel == 'week':
-            return [ dict(d,**{'{Id}': nid[0]}) for d, nid in zip(self.ongoingWeek(row_shrange = row_shrange, sheet = sheet), newId) ]
+            return [ dict(d,**{'{ID}': nid[0]}) for d, nid in zip(self.ongoingWeek(row_shrange = row_shrange, sheet = sheet), newId) ]
         elif classLabel == 'camp':
-            return [ dict(d, **{'{Id}': nid[0]}) for d, nid in zip(self.ongoingCamp(row_shrange = row_shrange, sheet = sheet), newId) ]
+            return [ dict(d, **{'{ID}': nid[0]}) for d, nid in zip(self.ongoingCamp(row_shrange = row_shrange, sheet = sheet), newId) ]
         elif classLabel == 'stripe':
-            return [ dict(d, **{'{Id}': nid[0]}) for d, nid in zip(self.ongoingStripe(row_shrange = row_shrange, sheet = sheet), newId) ]
+            return [ dict(d, **{'{ID}': nid[0]}) for d, nid in zip(self.ongoingStripe(row_shrange = row_shrange, sheet = sheet), newId) ]
     
     def expiredClass(self,):
         '''
@@ -311,7 +309,7 @@ class ExcelBase(object):
             
             return type: 
                 - list
-                    - Id: str(uuid4)
+                    - ID: str(uuid4)
                     - Datetime: str(isoformat)
                     - AlbumHash: str
         '''
@@ -404,7 +402,7 @@ class ExcelBase(object):
         for ex in expired:
             date = ex[0][5].split('-')[0]
             time = ex[0][6].split('-')[0]
-            expired_fill.append({"Id":ex[0][0],
+            expired_fill.append({"{ID}":ex[0][0],
                                 "{CLASSTAG}":ex[0][1],
                                 "{CLASSNAME}":ex[0][2],
                                 "{CLASSDATE}":datetime.strptime(f"{date} {time}", "%Y/%m/%d %H:%M").isoformat() })
@@ -426,17 +424,17 @@ class ExcelBase(object):
         except:
             shrange_st = 4
         shrange_end = shrange_st+len(new_hist)-1
-        sheet.update(shrange.format(shrange_st, shrange_end), [list(v.values())for v in new_hist])
+#         sheet.update(shrange.format(shrange_st, shrange_end), [list(v.values())for v in new_hist])
         return self.__expiredHistoryUpdate(hist)
         
 #         return new_hist
     
     def __expiredHistoryUpdate(self, hist):
-        return [ {'Id':h[0], '{CLASSDATE}':h[3],'{ALBUMHASH}':h[-1] }for h in hist if len(h)==5] if hist else []
+        return [ {'{CLASSNAME}':h[2], '{CREATEDATE}':h[3],'{ALBUMHASH}':h[-1] }for h in hist if len(h)==5] if hist else []
 
 # pprint(ExcelBase().ongoingTotal())
 # pprint(ExcelBase().ongoingStripe())
 # pprint(ExcelBase().ongoingWeek())
 # pprint(ExcelBase().newClass())
-pprint(ExcelBase().expiredClass())
-
+# pprint(ExcelBase().expiredClass())
+# pprint(ExcelBase().)

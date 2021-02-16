@@ -13,17 +13,18 @@ from pprint import pprint
 # logger = logging.getLogger()
 # logger.setLevel(logging.DEBUG)
 
-USERS_TABLE = 'YoungMaker-basic'
-IS_OFFLINE = True
+# USERS_TABLE = 'YoungMaker-basic'
+# IS_OFFLINE = True
 # USERS_TABLE = os.environ['USERS_TABLE']
 # IS_OFFLINE = os.environ.get('IS_OFFLINE')
-
+IS_OFFLINE = os.environ.get('IS_OFFLINE')
 if IS_OFFLINE:
 #     client = boto3.client(
 #             'dynamodb',
 #             region_name = 'localhost',
 #             endpoint_url = 'http://localhost:8000'
 #             )
+    print('Dynamodb offline mode')
     dynamodb = boto3.resource('dynamodb',region_name = 'localhost', endpoint_url="http://localhost:8000")
 else:
     client = boto3.client('dynamodb')
@@ -54,31 +55,79 @@ class dynamodbAdapter(object):
 
         
     def putOngoing(self, ongoing):
-        createDate = datetime.datetime.now().isoformat()
-        lastUpdate = createDate
+        '''
+            [Dyanamodb]newClass return type: 
+                - list
+                    - Id: str(uuid4)
+                    - {CLASSTAG}: str
+                    - {CLASSNAME}: str
+                    - {CLASDATE}: str(NOT isoformat)
+                    - {CLASSTIME}: str
+                    - {CLASSINTRO}': str
+                    - {COVERURL}: str(URL)
+        '''
+        timeStamp = datetime.datetime.now().isoformat()
+        lastUpdate = timeStamp
         dynamodb = boto3.resource('dynamodb',region_name = 'localhost', endpoint_url="http://localhost:8000")
-        table = dynamodb.Table('YoungMaker-basic')
-        with table.batch_writer() as batch:
-            batch._flush=types.MethodType(_flush, batch)
-            for k, v in classes.items:
-                for vv in v:
-#                             camp = [{'{CLASSNAME}':name[0], '{CLASSINTRO}':intro[0],'{URL}':url[0] } for name, intro, url in zip(camp_name, camp_intro, camp_url)]
-
-                    batch.put_item(
-                        {
-                        'Id': vv['{ID}'],
-                        'category': 'class',
-                        'className': vv['{CLASSNAME}'],
-#                         'classDate': vv['{CLASSDATE}'],
-                        'classIntro': vv['{CLASSINTRO}'],
-                        'coverURL': vv['COVERURL'],
-                        }
-                    )
+        table = dynamodb.Table('youngmaker-class')
         
-        return batch._response
+#         print(ongoing)
+        with table.batch_writer(overwrite_by_pkeys=['ClassName', 'ClassLabel', 'CreateDate']) as batch:
+            batch._flush=types.MethodType(_flush, batch)
+            for o in ongoing:
+#                 pprint(o['{CLASSTAG}'].split('#'))
+                Date = o['{CLASSDATE}'].split('-') if '-' in o['{CLASSDATE}'] else [o['{CLASSDATE}'], o['{CLASSDATE}']]
+                Time = o['{CLASSTIME}'].split('-') if '-' in o['{CLASSTIME}'] else [o['{CLASSTIME}'], o['{CLASSTIME}']]
+                item = {
+                    'Id':o['{ID}'],
+                    'ClassName': o['{CLASSNAME}'],
+                    'ClassLabel': o['{CLASSTAG}'].split('#')[1],
+                    'ClassTag': [  tag for tag in o['{CLASSTAG}'].split('#') if tag ],
+                    'ClassIntro': o['{CLASSINTRO}'],
+                    'CoverURL': o['{COVERURL}'],
+                    
+                    'CreateDate': datetime.datetime.strptime(f'{Date[0]} {Time[0]}', "%Y/%m/%d %H:%M").isoformat(),
+                    'CloseDate': datetime.datetime.strptime(f'{Date[1]} {Time[1]}', "%Y/%m/%d %H:%M").isoformat(),
+                    
+                    'TimeStamp':timeStamp,
+                    'LastUpdate':lastUpdate
+                }
+#                 pprint(item)
+                batch.put_item(Item=item)
+        
+#         return batch._response
 
     def putAlbum(self,albums):
-        pass
+        print("[putAlbum]")
+        lastUpdate = datetime.datetime.now().isoformat()
+        dynamodb = boto3.resource('dynamodb',region_name = 'localhost', endpoint_url="http://localhost:8000")
+        table = dynamodb.Table('youngmaker-class')
+        for album in albums:
+            print(album['{CLASSNAME}'], album['{CREATEDATE}'])
+            key = { 'ClassName': album['{CLASSNAME}'], 'CreateDate':album['{CREATEDATE}'] }
+            table.update_item(
+                Key = key,
+                UpdateExpression="SET AlbumHash = :new_albumHash, LastUpdate = :lastUpdate",
+                ExpressionAttributeValues={':new_albumHash':album['{ALBUMHASH}'], ':lastUpdate':lastUpdate},
+                ReturnValues = "UPDATED_NEW"
+            )
+        
+    def getAlbum(self ,ClassLabel):
+        print("[getAlbum]")
+        dynamodb = boto3.resource('dynamodb', region_name = 'localhost', endpoint_url="http://localhost:8000")
+        table = dynamodb.Table('youngmaker-class')
+#         with table.batch_writer(overwrite_by_pkeys=['ClassName', 'ClassLabel', 'CreateDate']) as batch:
+#             batch.update_item(
+#                 Key={
+#                     'Id': '1',
+#                     'category': 'class'
+#                 },
+#                 UpdateExpression="SET #newkey = :newvalue",
+#                 ExpressionAttributeNames={'#newkey':'online'},
+#                 ExpressionAttributeValues={':newvalue': True},
+#                 ReturnValues="UPDATED_NEW"
+#             )
+        
     def getClass(self,):
         dynamodb = boto3.resource('dynamodb',region_name = 'localhost', endpoint_url="http://localhost:8000")
         table = dynamodb.Table('YoungMaker-basic')
@@ -91,12 +140,17 @@ class dynamodbAdapter(object):
         
     def queryClass(self, ):
         dynamodb = boto3.resource('dynamodb',region_name = 'localhost', endpoint_url="http://localhost:8000")
-        table = dynamodb.Table('YoungMaker-basic')
+        table = dynamodb.Table('youngmaker-class')
 
         res = table.query(
-                        KeyConditionExpression='Id = :artist',
+                        IndexName = "ClassLabel-CreateDate-index",
+                        KeyConditionExpression='ClassLabel = :artist and CreateDate > :qDate',
+                        FilterExpression='ClassTag = :ctag',
                         ExpressionAttributeValues={
-                            ':artist': {'S': '1'}
+                            ':artist': '帶狀課',
+                            ':qDate': datetime.datetime.strptime("2001-01-01","%Y-%m-%d").isoformat(),
+#                             ':qDate': "2001/01/01",
+                            ':ctag':['帶狀課']
 #                             ':artist': {'S': 'ed8a47dd-17c6-4a06-8895-59d77e30d26f'}
                         }
                     )
@@ -117,11 +171,11 @@ class dynamodbAdapter(object):
         )
         
         return response
-if __name__ == '__main__':
-    res = dynamodbAdapter().putAllClass("The Big New Movie", 2015,
-                           "Nothing happens at all.", 0)
+# if __name__ == '__main__':
+#     res = dynamodbAdapter().putAllClass("The Big New Movie", 2015,
+#                            "Nothing happens at all.", 0)
 #     res = dynamodbAdapter().getClass()
 #     res = dynamodbAdapter().queryClass()
 #     res = dynamodbAdapter().updateClass()
-    print("Put movie succeeded:")
-    pprint(res)
+#     print("Put movie succeeded:")
+#     pprint(res)

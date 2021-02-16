@@ -1,5 +1,7 @@
 from flask import Flask, request, abort, jsonify, render_template, make_response
 from config import Config
+from weeklyUpdate import WeeklyUpdate
+from pprint import pprint
 
 import logging
 import time
@@ -82,10 +84,21 @@ def get_user(user_id):
         "userName": resp['Item']['userName']['S'],
         "timeStamp": resp['Item']['timeStamp']['S']
         })
-# 以下是LIFF程式碼
-# @app.route('/static/js/<path:path>')
-# def send_js(path):
-#     return send_from_directory('static/js', path)
+
+@app.route('/put_test')
+def put_test():
+#     print ("Hello")
+    WeeklyUpdate().weeklyUpdate(None)
+    return ("nothing")
+
+
+@app.route('/get_test')
+def get_test():
+#     print ("Hello")
+#     WeeklyUpdate().weeklyUpdate(None)
+    pprint(WeeklyUpdate().queryClass())
+    return ("nothing")
+
 
 @app.route('/')
 @app.route('/index')
@@ -95,8 +108,26 @@ def index():
     Description = [{'cate':'category1', 'name':'category1'}, {'cate':'category2', 'name':'category2'}]
     history_dic = {}
     history_list = []
-    return render_template('index.html', Description  = Description)
+    Item = [
+    {'pile':'a','url':'static/images/1/1.jpg'},
+    {'pile':'a','url':'static/images/1/1.jpg'},
+    {'pile':'a','url':'static/images/1/1.jpg'},
+    {'pile':'a','url':'static/images/1/1.jpg'},
+    {'pile':'a','url':'static/images/1/1.jpg'},
+    {'pile':'a','url':'static/images/1/1.jpg'},
+    {'pile':'a','url':'static/images/1/1.jpg'},
+    {'pile':'a','url':'static/images/1/1.jpg'},
+    
+    ]
+#     return render_template('index.html', Description  = Description, year='2020', month = '1月')
+    return render_template("index3.html", Item=Item)
 
+@app.route('/sendmsg')
+def sendMsg():
+    return render_template('sendmsg.html')
+    
+
+# def load_Generator():
 db = list()  # The mock database
 
 posts = 500  # num posts to generate
@@ -104,21 +135,15 @@ posts = 500  # num posts to generate
 quantity = 20  # num posts to return per request
 
 for x in range(posts):
-#     heading_parts = heading.split(" ")
-#     random.shuffle(heading_parts)
-
-#     content_parts = content.split(" ")
-#     random.shuffle(content_parts)
-
-    db.append('a')
+    db.append(x)
 
 @app.route("/load")
 def load():
     """ Route to return the posts """
-
-    time.sleep(0.2)  # Used to simulate delay
-
+#     time.sleep(0.2)  # Used to simulate delay
+#     Generator()
     if request.args:
+        
         counter = int(request.args.get("c"))  # The 'counter' value sent in the QS
 
         if counter == 0:

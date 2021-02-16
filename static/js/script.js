@@ -28,12 +28,12 @@ function loadItems() {
     var scroller = document.querySelector("#scroller");
     var template = document.querySelector('#post_template');
     var sentinel = document.querySelector('#sentinel');
-    var filter_now = document.getElementById("data-filter-now").getAttribute("data-filter-now");
-//     alert(filter_now);
     var counter = 0;
 
-  // Use fetch to request data and pass the counter value in the QS
-  fetch(`/load?c=${counter}`).then((response) => {
+    var filter_now = document.getElementById("data-filter-now").getAttribute("data-filter-now");
+    
+    // Use fetch to request data and pass the counter value in the QS
+    fetch(`/load?c=${counter}&filter_now=${filter_now}`).then((response) => {
 
     // Convert the response data to JSON
     response.json().then((data) => {
@@ -51,6 +51,12 @@ function loadItems() {
 
         // Clone the HTML template
         let template_clone = template.content.cloneNode(true);
+        template_clone.querySelector("#iimg").src="https://picsum.photos/400/250?image=486";
+        template_clone.querySelector("#aimg").setAttribute("data-fancybo","category1");
+        template_clone.querySelector("#dimg").className+=" category1";
+          
+          
+          
         if (filter_now === "category1"){
 
         // Query & update the template content

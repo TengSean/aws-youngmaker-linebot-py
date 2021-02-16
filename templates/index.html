@@ -32,10 +32,20 @@
                 <h1 class="gallery-title">Gallery</h1>
             </div>
 
-            <div align="center" id = "data-filter-now" data-filter-now="all">
+            <div align="center" id = "data-filter-now" data-filter-year="{{year}}" data-filter-year="all">
                 <button class="filter-button" data-filter="all">All</button>
                 
-                {% for item in Description %}
+                {% for item in Description.year %}
+                 <button class="filter-button" data-filter="{{item.cate}}">{{item.name}}</button>
+<!--                 <button class="filter-button" data-filter="category1">Designing</button>
+                <button class="filter-button" data-filter="category2">Development</button>
+                <button class="filter-button" data-filter="category3">Graphics</button> -->
+                {% endfor %}
+            </div>
+            <div align="center" id = "data-filter-now" data-filter-month="{{year}}" data-filter-month="all">
+                <button class="filter-button" data-filter="all">All</button>
+                
+                {% for item in Description.month %}
                  <button class="filter-button" data-filter="{{item.cate}}">{{item.name}}</button>
 <!--                 <button class="filter-button" data-filter="category1">Designing</button>
                 <button class="filter-button" data-filter="category2">Development</button>

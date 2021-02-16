@@ -10,10 +10,11 @@ class WeeklyUpdate(object):
         pass
         self.newclass = None
         self.album = None
-        self.todo_table = {'newclass':self.__newclass,
+        self.todo_table = {'newclass':self.__newClass,
                          'expiredClass':self.__expiredClass,
                          'album':self.__album}
     def weeklyUpdate(self, old):
+        
 #         ept = {}
 #         for to_eb in itertools.product(self.todo, ExcelBase().ongoingTotal().values()):
 #             [ ept.update({to_eb[0]+' '+te['{CLASSNAME}']:0}) for te in to_eb[1]]
@@ -36,17 +37,16 @@ class WeeklyUpdate(object):
     
         TODO = ['newclass', 'expiredClass']
         todo_res = {}
-        for todo in TODO:
-            todo_res[todo] = todo_table[todo]
-        
+#         for todo in TODO:
+#             todo_res[todo] = todo_table[todo]
+        on = dynamodbAdapter().putOngoing( self.todo_table[TODO[0]]() )
+        al = dynamodbAdapter().putAlbum( self.todo_table[TODO[1]]() )
 #         newclass = self.__newClass()
 #         self.album = self.__album()
-        if self.newclass or self.album:
-            pprint(self.album)
-#             pprint(self.newclass)
-        else:
-            # Do nothing.
-            pass
+
+    def queryClass(self,):
+        return dynamodbAdapter().queryClass()
+    
     def __newClass(self, ):
         '''
             return boolean
@@ -60,4 +60,4 @@ class WeeklyUpdate(object):
     
     def __album(sellf, ):
         return ExcelBase().albumTotal()
-wu = WeeklyUpdate().weeklyUpdate(None)
+# wu = WeeklyUpdate().weeklyUpdate(None)
