@@ -121,7 +121,7 @@ def index():
     ]
 #     return render_template('index.html', Description  = Description, year='2020', month = '1月')
     return render_template("index3.html", Item=Item)
-
+#     return render_template('photo.html')
 @app.route('/sendmsg')
 def sendMsg():
     return render_template('sendmsg.html')

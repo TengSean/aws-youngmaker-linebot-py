@@ -39,10 +39,12 @@ class WeeklyUpdate(object):
         todo_res = {}
 #         for todo in TODO:
 #             todo_res[todo] = todo_table[todo]
-        on = dynamodbAdapter().putOngoing( self.todo_table[TODO[0]]() )
-        al = dynamodbAdapter().putAlbum( self.todo_table[TODO[1]]() )
-#         newclass = self.__newClass()
-#         self.album = self.__album()
+        on = dynamodbAdapter().putOngoing( 
+                                    self.todo_table[TODO[0]]()
+                                )
+        al = dynamodbAdapter().putAlbum( 
+                                    self.todo_table[TODO[1]]()
+                                )
 
     def queryClass(self,):
         return dynamodbAdapter().queryClass()
