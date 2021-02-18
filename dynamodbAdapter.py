@@ -13,10 +13,8 @@ from pprint import pprint
 # logger = logging.getLogger()
 # logger.setLevel(logging.DEBUG)
 
-# USERS_TABLE = 'YoungMaker-basic'
 # IS_OFFLINE = True
 # USERS_TABLE = os.environ['USERS_TABLE']
-# IS_OFFLINE = os.environ.get('IS_OFFLINE')
 IS_OFFLINE = os.environ.get('IS_OFFLINE')
 if IS_OFFLINE:
 #     client = boto3.client(
@@ -27,6 +25,7 @@ if IS_OFFLINE:
     print('Dynamodb offline mode')
     dynamodb = boto3.resource('dynamodb',region_name = 'localhost', endpoint_url="http://localhost:8000")
 else:
+    print('Dynamodb online mode')
     client = boto3.client('dynamodb')
 
 # https://stackoverflow.com/questions/55286446/getting-http-response-from-boto3-table-batch-writer-object
@@ -68,7 +67,10 @@ class dynamodbAdapter(object):
         '''
         timeStamp = datetime.datetime.now().isoformat()
         lastUpdate = timeStamp
-        dynamodb = boto3.resource('dynamodb',region_name = 'localhost', endpoint_url="http://localhost:8000")
+        if IS_OFFLINE:
+            dynamodb = boto3.resource('dynamodb',region_name = 'localhost', endpoint_url="http://localhost:8000")
+        else:
+            dynamodb = boto3.resource('dynamodb')
         table = dynamodb.Table('youngmaker-class')
         
 #         print(ongoing)
@@ -100,7 +102,10 @@ class dynamodbAdapter(object):
     def putAlbum(self,albums):
         print("[putAlbum]")
         lastUpdate = datetime.datetime.now().isoformat()
-        dynamodb = boto3.resource('dynamodb',region_name = 'localhost', endpoint_url="http://localhost:8000")
+        if IS_OFFLINE:
+            dynamodb = boto3.resource('dynamodb',region_name = 'localhost', endpoint_url="http://localhost:8000")
+        else:
+            dynamodb = boto3.resource('dynamodb')
         table = dynamodb.Table('youngmaker-class')
         for album in albums:
             print(album['{CLASSNAME}'], album['{CREATEDATE}'])
@@ -114,7 +119,10 @@ class dynamodbAdapter(object):
         
     def getAlbum(self ,ClassLabel):
         print("[getAlbum]")
-        dynamodb = boto3.resource('dynamodb', region_name = 'localhost', endpoint_url="http://localhost:8000")
+        if IS_OFFLINE:
+            dynamodb = boto3.resource('dynamodb', region_name = 'localhost', endpoint_url="http://localhost:8000")
+        else:
+            dynamodb = boto3.resource('dynamodb')
         table = dynamodb.Table('youngmaker-class')
 #         with table.batch_writer(overwrite_by_pkeys=['ClassName', 'ClassLabel', 'CreateDate']) as batch:
 #             batch.update_item(
@@ -129,7 +137,10 @@ class dynamodbAdapter(object):
 #             )
         
     def getClass(self,):
-        dynamodb = boto3.resource('dynamodb',region_name = 'localhost', endpoint_url="http://localhost:8000")
+        if IS_OFFLINE:
+            dynamodb = boto3.resource('dynamodb',region_name = 'localhost', endpoint_url="http://localhost:8000")
+        else:
+            dynamodb = boto3.resource('dynamodb')
         table = dynamodb.Table('YoungMaker-basic')
         try:
             res = table.get_item(Key={'Id': '2', 'category': 'class'})
@@ -139,7 +150,10 @@ class dynamodbAdapter(object):
             return res['Item']
         
     def queryClass(self, ):
-        dynamodb = boto3.resource('dynamodb',region_name = 'localhost', endpoint_url="http://localhost:8000")
+        if IS_OFFLINE:
+            dynamodb = boto3.resource('dynamodb',region_name = 'localhost', endpoint_url="http://localhost:8000")
+        else:
+            dynamodb = boto3.resource('dynamodb')
         table = dynamodb.Table('youngmaker-class')
 
         res = table.query(
@@ -157,7 +171,10 @@ class dynamodbAdapter(object):
         return res
     
     def updateClass(self,):
-        dynamodb = boto3.resource('dynamodb',region_name = 'localhost', endpoint_url="http://localhost:8000")
+        if IS_OFFLINE:
+            dynamodb = boto3.resource('dynamodb',region_name = 'localhost', endpoint_url="http://localhost:8000")
+        else:
+            dynamodb = boto3.resource('dynamodb')
         table = dynamodb.Table('YoungMaker-basic')
         response = table.update_item(
             Key={
@@ -171,7 +188,55 @@ class dynamodbAdapter(object):
         )
         
         return response
-# if __name__ == '__main__':
+    
+    
+    def putUser(self,Id, name):
+        if IS_OFFLINE:
+            dynamodb = boto3.resource('dynamodb',region_name = 'localhost', endpoint_url="http://localhost:8000")
+        else:
+            dynamodb = boto3.resource('dynamodb')
+        table = dynamodb.Table('youngmaker-user-prod')
+        item = {
+        'Id':Id,
+        'Name':name
+        }
+        res = table.put_item(Item=item)
+        return res
+    
+    def updateUser(self, Id):
+        if IS_OFFLINE:
+            dynamodb = boto3.resource('dynamodb',region_name = 'localhost', endpoint_url="http://localhost:8000")
+        else:
+            dynamodb = boto3.resource('dynamodb')
+        table = dynamodb.Table('youngmaker-user-prod')
+        res = table.update_item(
+            Key={
+                'Id': '0',
+            },
+            UpdateExpression="SET #ri = list_append(#ri, :vals)",
+            ExpressionAttributeNames={'#ri':'Ids'},
+            ExpressionAttributeValues={':vals': [Id]},
+            ReturnValues="UPDATED_NEW"
+        )
+        return res
+    def getUser(self, ):
+        if IS_OFFLINE:
+            dynamodb = boto3.resource('dynamodb',region_name = 'localhost', endpoint_url="http://localhost:8000")
+        else:
+            dynamodb = boto3.resource('dynamodb')
+        table = dynamodb.Table('youngmaker-user-prod')
+        try:
+            res = table.get_item(Key={'Id': '0'})
+        except ClientError as e:
+            print(e.response['Error']['Message'])
+        else:
+            return res['Item']
+
+if __name__ == '__main__':
+    pprint(dynamodbAdapter().putUser())
+    pprint(dynamodbAdapter().updateUser())
+    pprint(dynamodbAdapter().getUser())
+    
 #     res = dynamodbAdapter().putAllClass("The Big New Movie", 2015,
 #                            "Nothing happens at all.", 0)
 #     res = dynamodbAdapter().getClass()

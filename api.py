@@ -11,6 +11,9 @@ import json
 
 import os
 
+from dynamodbAdapter import dynamodbAdapter
+
+
 import boto3, botocore
 
 from linebot import (
@@ -33,14 +36,16 @@ USERS_TABLE = os.environ['USERS_TABLE']
 IS_OFFLINE = os.environ.get('IS_OFFLINE')
 
 if IS_OFFLINE:
-    client = boto3.client(
-            'dynamodb',
-            region_name = 'localhost',
-            endpoint_url = 'http://localhost:8000'
-            )
+#     client = boto3.client(
+#             'dynamodb',
+#             region_name = 'localhost',
+#             endpoint_url = 'http://localhost:8000'
+#             )
+    dynamodb = boto3.resource('dynamodb',region_name = 'localhost', endpoint_url="http://localhost:8000")
 
 else:
-    client = boto3.client('dynamodb')
+#     client = boto3.client('dynamodb')
+    dynamodb = boto3.resource('dynamodb')
     
 # 以下是dynamodb測試
 @app.route("/users", methods=["POST"])
@@ -122,6 +127,9 @@ def index():
 #     return render_template('index.html', Description  = Description, year='2020', month = '1月')
     return render_template("index3.html", Item=Item)
 #     return render_template('photo.html')
+
+
+
 @app.route('/sendmsg')
 def sendMsg():
     return render_template('sendmsg.html')
@@ -177,7 +185,7 @@ def webhook():
 
     return 'OK'
 
-@cf.handler.add(MessageEvent, message=TextMessage)
+# @cf.handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
     lid = event.source.user_id
@@ -200,30 +208,31 @@ def handle_message(event):
 def handle_follow(event):
     lid = event.source.user_id
     mtype = event.type
-
-    resp = client.put_item(
-        TableName=USERS_TABLE,
-        Item={
-            'UUID': {'S':lid},
-            'category': {'S': 'user'},
-            'userName': {'S': cf.line_bot_api.get_profile(lid).display_name},
-            'timeStamp': {'S': datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')}
-        }
-    )
-    print(lid)
+    print(dynamodbAdapter().putUser(lid, cf.line_bot_api.get_profile(lid).display_name))
+    print(dynamodbAdapter().updateUser(lid))
+#     resp = client.put_item(
+#         TableName=USERS_TABLE,
+#         Item={
+#             'UUID': {'S':lid},
+#             'category': {'S': 'user'},
+#             'userName': {'S': cf.line_bot_api.get_profile(lid).display_name},
+#             'timeStamp': {'S': datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')}
+#         }
+#     )
+#     print(lid)
     
-    bot = Bot(mtype, lid)
-    strategy_class, action_func, values = bot.strategy()
-    task = strategy_class(func = action_func.execute, event = event)
-    task.execute(lid = lid, name = cf.line_bot_api.get_profile(lid).display_name)
-    task.name = str(action_func)
+#     bot = Bot(mtype, lid)
+#     strategy_class, action_func, values = bot.strategy()
+#     task = strategy_class(func = action_func.execute, event = event)
+#     task.execute(lid = lid, name = cf.line_bot_api.get_profile(lid).display_name)
+#     task.name = str(action_func)
     
 #     cf.line_bot_api.reply_message(
 #     event.reply_token,
 #     TextSendMessage(text=handler_follow(line_bot_api.get_profile(lid).display_name))
 #     )
 
-@cf.handler.add(PostbackEvent)
+# @cf.handler.add(PostbackEvent)
 def handle_postback(event):
 #     msg = event.message.text
     lid = event.source.user_id

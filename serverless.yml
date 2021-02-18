@@ -24,7 +24,7 @@ provider:
   name: aws
   runtime: python3.7
   lambdaHashingVersion: 20201221
-  stage: test
+  stage: prod
   region: us-east-1
   iamRoleStatements:
     - Effect: "Allow"
@@ -35,8 +35,9 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource:
-        - { "Fn::GetAtt":["UsersDynamoDBTable", "Arn"]}
+      Resource: "*"
+      
+#         - { "Fn::GetAtt":["UserDynamoDBTable", "ClassDynamoDBTable", "Arn"]}
   environment:
     USERS_TABLE: ${self:custom.tableName}
 
@@ -92,7 +93,7 @@ resources:
     ClassDynamoDBTable:
       Type: 'AWS::DynamoDB::Table'
       Properties:
-        TableName: 'youngmaker-class'
+        TableName: 'youngmaker-class-${self:provider.stage}'
         AttributeDefinitions:
           -
             AttributeName: ClassName
@@ -129,7 +130,7 @@ resources:
     UserDynamoDBTable:
       Type: 'AWS::DynamoDB::Table'
       Properties:
-        TableName: 'youngmaker-user'
+        TableName: 'youngmaker-user-${self:provider.stage}'
         AttributeDefinitions:
           -
             AttributeName: Id
