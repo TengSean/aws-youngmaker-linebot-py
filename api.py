@@ -12,7 +12,7 @@ import json
 import os
 
 from dynamodbAdapter import dynamodbAdapter
-
+from webAdapter import WebAdapter
 
 import boto3, botocore
 
@@ -109,10 +109,7 @@ def get_test():
 @app.route('/index')
 def index():
     
-    data = "Deploying a Flask App To Heroku"
     Description = [{'cate':'category1', 'name':'category1'}, {'cate':'category2', 'name':'category2'}]
-    history_dic = {}
-    history_list = []
     Item = [
     {'pile':'a','url':'static/images/1/1.jpg'},
     {'pile':'a','url':'static/images/1/1.jpg'},
@@ -122,11 +119,14 @@ def index():
     {'pile':'a','url':'static/images/1/1.jpg'},
     {'pile':'a','url':'static/images/1/1.jpg'},
     {'pile':'a','url':'static/images/1/1.jpg'},
-    
     ]
-#     return render_template('index.html', Description  = Description, year='2020', month = '1月')
-    return render_template("index3.html", Item=Item)
-#     return render_template('photo.html')
+    
+    Item_tmp = WebAdapter().webAdapter(ClassLabel = '帶狀課')
+    Item = []
+    _ = [ Item.extend(vv) for k,v in Item_tmp.items() for kk, vv in v.items()]
+#     pprint(res)
+
+    return render_template("index3.html", Items=Item)
 
 
 

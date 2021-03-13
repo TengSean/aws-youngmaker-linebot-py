@@ -24,7 +24,7 @@ provider:
   name: aws
   runtime: python3.7
   lambdaHashingVersion: 20201221
-  stage: prod
+  stage: dev
   region: us-east-1
   iamRoleStatements:
     - Effect: "Allow"

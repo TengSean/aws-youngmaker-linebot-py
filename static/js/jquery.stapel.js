@@ -473,12 +473,22 @@
 
 				p.position.left = l;
 				p.position.top = t;
+                var ar = $("ul").find("[data-pile='" + pile + "'] > a > img");
+                var maxl = []
+                
+                ar.each(function(index){
+                    maxl.push(this.height);
+                });
+                var ma = Math.max.apply(null, maxl);
+                var mi = Math.min.apply(null, maxl);
 
-				for( var i = 0, len = p.elements.length; i < len; ++i ) {
+//                 console.log(mm);
+                var gap = 0;
+
+                for( var i = 0, len = p.elements.length; i < len; ++i ) {
 
 					var elem = p.elements[i],
 						fp = elem.finalPosition;
-
 					if( accumIL + stepW <= this.elWidth ) {
 
 						il = accumIL;
@@ -487,18 +497,37 @@
 
 					}
 					else {
-
-						accumIT += this.itemSize.height + this.options.gutter;
+                        
+//                         if (ar[i-1].height > max && i>0)
+//                             max = ar[i-1].height;
+//                         if (i>0 && ar[i-1].height >= (ar[i].height - 5))
+//                             if ( (ar[i-1].height) > (ar[i].height))
+//                                 gap = ar[i-1].height - ar[i].height;
+                        if (i>0 && ar[i-1].height === ma)
+                            gap = ma-mi;
+                        else
+                            gap = 0;
+                        accumIT += this.itemSize.height + this.options.gutter + gap;
+//                         console.log(ar[i].height);
 						il = 0;
 						it = accumIT;
 						accumIL = stepW;
 
 					}
 
-					fp.left = il;
+//                     console.log(pile);
+//                     $("ul").find()
+//                     $("ul").find("[data-pile='" + pile + "'] > a > img").each(function(index){
+//                         console.log($(this).height());
+//                         return false;
+//                     });
+//                     console.log($(ar[0]).height());
+//                     console.log(this.itemSize.height);
+//                     console.log(p.elements.length);
+                    fp.left = il;
 					fp.top = it;
-
-					var $el = $( elem.el );
+//                     console.log(fp.top);
+                    var $el = $( elem.el );
 
 					if( pile !== this.pileName ) {
 						
@@ -559,6 +588,7 @@
 
 						if( i < len - 1  ) {
 							$img.css( 'visibility', 'visible' );
+// 							$img.css( 'display', 'none' );
 						}
 						
 						fs = elem.finalPosition;
@@ -708,6 +738,7 @@
 
 							if( $el.index() < len - 1  ) {
 								$el.find( 'img' ).css( 'visibility', 'visible' );
+// 								$el.find( 'img' ).css( 'visibility', 'hidden' );
 							}
 
 							if( self.support ) {

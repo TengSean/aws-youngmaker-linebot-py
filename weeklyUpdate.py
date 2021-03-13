@@ -37,12 +37,10 @@ class WeeklyUpdate(object):
     
         TODO = ['newclass', 'expiredClass']
         todo_res = {}
-#         for todo in TODO:
-#             todo_res[todo] = todo_table[todo]
-        on = dynamodbAdapter().putOngoing( 
+        on = dynamodbAdapter("dev").putOngoing( 
                                     self.todo_table[TODO[0]]()
                                 )
-        al = dynamodbAdapter().putAlbum( 
+        al = dynamodbAdapter("dev").putAlbum( 
                                     self.todo_table[TODO[1]]()
                                 )
 

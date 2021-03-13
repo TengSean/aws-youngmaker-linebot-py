@@ -7,15 +7,16 @@
 .tp-grid li {
 	position: absolute;
 	cursor: pointer;
-	border: 10px solid #fff;
+	border: 3px solid #fff;
 	box-shadow: 0 2px 3px rgba(0,0,0,0.2);
 	display: none;
 	overflow: hidden;
 	-webkit-backface-visibility: hidden;
 	-moz-backface-visibility: hidden;
-	-o-backface-visibility: hidden;
+	-o-backface-visibility: ~;
 	-ms-backface-visibility: hidden;
 	backface-visibility: hidden;
+/*     display: none; */
 }
 
 .no-js .tp-grid li {
@@ -43,7 +44,7 @@
 	width: 75%;
 	padding: 10px;
 	font-weight: 700;
-	text-align: right;
+	text-align: left;
 	left: -100%;
 	box-shadow: 
 		1px 1px 1px rgba(0,0,0,0.1),

@@ -6,25 +6,28 @@
 
 .topbar {
 	position: relative;
-	padding: 20px 0;
+/*     height: */
+	padding: 40px 0;
 	margin: 0 0 40px;
 	box-shadow: 0 1px 0 #aaa, 0 -1px 0 #aaa;
 }
 
 .back {
-	width: 40px;
-	height: 40px;
-	position: absolute;
-	left: 50%;
-	top: 50%;
+    
+/* 	width: 40px;
+	height: 40px; */
+	position: fixed;
+/* 	position: absolute; */
+/* 	left: 50%;*/
+/* 	top: 50%; */
 	margin: -20px 0 0 -20px;
-	border-radius: 50%;
-	text-align: center;
-	line-height: 38px;
+/* 	border-radius: 50%; */
+ 	text-align: center;
+/*	line-height: 38px;
 	color: #999;
 	background: #ddd;
-	background: rgba(255,255,255,0.5);
-	cursor: pointer;
+	background: rgba(255,255,255,0.5); */
+/* 	cursor: pointer; */
 	display: none;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
@@ -34,7 +37,8 @@
 	user-select: none;
 }
 
-.no-touch .back:hover {
+/* .no-touch .back:hover { */
+.no-touch {
 	background: #fff;
 	background: rgba(255,255,255,0.9);
 }
